@@ -55,7 +55,7 @@ module.exports = {
           return;
         }
     
-        await db.logi(user, password);
+        await db.createUser(user, password);
     
       console.log(`User: ${user} successfully created`);
       reply.view("/src/pages/login.hbs", params);

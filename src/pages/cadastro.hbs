@@ -24,34 +24,24 @@
   <meta property="og:description" content="{{seo.description}}">
   <meta property="og:image" content="{{seo.image}}">
   <meta name="twitter:card" content="summary">
-
-  <!-- Import the webpage's stylesheet -->
   <link rel="stylesheet" href="/style.css" />
 
 </head>
 
 <body>
   <div class="form">
-    
-    <!-- Server asks for Registration -->
-    <form method="post" action="/registration">
-      <!-- Header -->
+    <form method="post" action="/cadastro">
       <h1>Cadastro</h1>
-      <!-- User -->
       <label>Usuario</label><br/>
       <input type="text" id="user" name="user" required /><br/>
-      <!-- Password -->
       <label>Senha</label><br/>
       <input type="password" id="password" name="password" required /><br/><br/>
-      <!-- Create Error label if exists -->
       {{#if error}}
         <label>Erro: {{error}}</label>
         <br/><br/>
       {{/if}}
-      <!-- Input Button -->
-      <button type="submit">Criar</button>
+      <button type="submit">Enviar</button>
     </form>
-    
   </div>
 </body>
 

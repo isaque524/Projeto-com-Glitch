@@ -61,7 +61,7 @@ module.exports = {
   
   // Find user in the database
   getUser: async(user) => {
-    console.log("exec getUser");
+    console.log("getUser em execução");
     // We use a try catch block in case of db errors
     try {
       let result = db.all(`SELECT * FROM users WHERE user="${user}"`);
@@ -74,7 +74,7 @@ module.exports = {
   
   // Check specific password from user in the database
   getPassword: async(user, password) => {
-    console.log("exec getPassword");
+    console.log("getPassword em execução");
     // We use a try catch block in case of db errors
     try {
       let result = db.all(`SELECT * FROM users WHERE user="${user}" and password="${password}"`);
@@ -98,18 +98,5 @@ module.exports = {
       console.error(dbError);
     }
   },
-  
-  // Get all books in the database
-  getBooks: async() => {
-    console.log("exec getBooks");
-    // We use a try catch block in case of db errors
-    try {
-      let result = await db.all("SELECT * FROM books");
-      return result;
-    } catch (dbError) {
-      // Database connection error
-      console.error(dbError);
-    }
-  }
   
 };
