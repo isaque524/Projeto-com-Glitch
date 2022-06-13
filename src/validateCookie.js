@@ -15,7 +15,7 @@ module.exports = {
       let credentials = Base64.decode(Authentication).split(":");
       let result = await db.getPassword(credentials[0], credentials[1]);
       if( result.length === 0 ){
-        console.error("Cookie incorreto")
+        console.error("Erro na validation do Cookie")
         return false;
       }
     

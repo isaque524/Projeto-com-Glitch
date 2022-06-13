@@ -5,10 +5,9 @@ var servidor = null
 module.exports = {
   
   listen: async(servidor) => {
-    // GET on /registration
-    servidor.get("/cadastro", module.exports.viewRegistration);
-    // POST on /registration
-    servidor.post("/cadastro", module.exports.validateRegistration);
+
+    servidor.get("/cadastro", module.exports.viewCadastro);
+    servidor.post("/cadastro", module.exports.validaCadastro);
   },
   
   viewCadastro: async(request, reply) => {
@@ -17,7 +16,7 @@ module.exports = {
       reply.view("/src/pages/cadastro.hbs", params);
   },
   
-  validateCadastro: async(request, reply) => {
+  validaCadastro: async(request, reply) => {
     console.log("validaCadastro em execuçaõ");
       let params = { seo: seo };
     
@@ -35,15 +34,12 @@ module.exports = {
           reply.view("/src/pages/cadastro.hbs", params);
           return;
         }
-      // Basic Auth Exception
         if( user.includes(":") ){
           console.error("Caracter especial não permitido")
           params.error = "Caracter especial não permitido";
           reply.view("/src/pages/cadastro.hbs", params);
           return;
         }
-    
-    // Basic Auth Exception
       if( user.includes(":") ){
         console.error("Caracter especial não permitido")
         params.error = "Caracter especial não permitido";
@@ -51,8 +47,6 @@ module.exports = {
         return;
       }
       
-    // Database
-      // Find if user exists
         let result = await db.getUser(user);
         if( result.length != 0 ){
           console.error("Usuário já existente")
@@ -60,10 +54,9 @@ module.exports = {
           reply.view("/src/pages/cadastro.hbs", params);
           return;
         }
-      // Insert user in the database
-        await db.createUser(user, password);
     
-    //Success
+        await db.logi(user, password);
+    
       console.log(`User: ${user} successfully created`);
       reply.view("/src/pages/login.hbs", params);
   }
