@@ -31,30 +31,31 @@
 </head>
 
 <body>
-  <div class="form">
-    
-    <!-- Server asks for Login -->
-    <form method="post" action="/">
-      <!-- Header -->
-      <h1>Login</h1>
-      <!-- User -->
-      <label>Usuario</label><br/>
-      <input type="text" id="user" name="user" required /><br/>
-      <!-- Password -->
-      <label>Senha</label><br/>
-      <input type="password" id="password" name="password" required /><br/><br/>
-      <!-- Create Error label if exists -->
+     <div class="container">
+<form action="/" method="post">
+      <div class=" card">
+            <h1>Login</h1>
+  <div class="label-float">
+        <input type="text" id="conta" name="conta" required>
+        <label for="conta">Conta: </label>
+    </div>
+        <div class="label-float">
+        <input type="password" id="senha" name="senha" required>
+        <label for="senha">Senha: </label>
+     </div>
+  <div class="justify-center">
+            <button type="submit">Entrar</button>
+        </div>
+  </div>
       {{#if error}}
         <label>Erro: {{error}}</label>
         <br/><br/>
       {{/if}}
-      <!-- Input Button -->
       <button type="submit">Entrar</button><br/>
-      <!-- Registration Link -->
       <a href="/registration">Cadastre-se</a>
-    </form>
-    
-  </div>
+      
+       </form>
+    </div>
 </body>
 
 </html>
