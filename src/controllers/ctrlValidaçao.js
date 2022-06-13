@@ -1,6 +1,5 @@
 const seo    = require("../seo.json");
 const db     = require("../sqlite.js");
-const ctrl   = require("./ctrlViewBooks.js");
 const Base64 = require("js-base64");
 var servidor = null
 

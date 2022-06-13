@@ -1,48 +1,102 @@
-/* Import Google Fonts */
-@import url("//fonts.googleapis.com/css2?family=Bungee+Shade:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;0,700;0,900;1,500;1,700;1,900&display=swap');
 
-/* form */
-  .form form{
-    left: 50%;
-    top: 50%;
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+body{
+    background-image: url(../imagens/yPsA2WR.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 180px;
+}
+.card{
+    background: rgba(146, 162, 239, 0.3);
+    padding: 30px;
+    border-radius: 4%;
+    box-shadow: 3px 3px 1px 0px ; 
+}
+
+h1{
+    text-align: center;
+    margin-bottom: 20px;
+    color: #0356fcd6;
+}
+
+.label-float input{
+    width: 100%;
+    padding: 5px 5px;
+    display: inline-block;
+    border: 0;
+    border-bottom: 2px solid #0356fcd6;
+    background-color: transparent;
+    outline: none;
+    min-width: 180px;
+    font-size: 16px;
+    transition: all .3s ease-out;
+    border-radius: 0;
+}
+
+.label-float{
+    position: relative;
+    padding-top: 13px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+
+.label-float label{
+    color: #fff;
+    pointer-events: none;
     position: absolute;
-    transform: translate(-50%, -50%);
-    border-style:solid;
-    border-color:#ff1919;
-    border-width:2px;
-    padding-left:22px;
-    padding-right:22px;
-    padding-top:22px;
-    padding-bottom:22px;
-    border-top-left-radius:22px;
-    border-top-right-radius:22px;
-    border-bottom-left-radius:22px;
-    border-bottom-right-radius:22px;
-    box-shadow:0px 0px 22px 11px #f6eea1;
-  }
-  .form form h1{
-    font-family:'Bungee Shade', display;
-    text-align:center;
-  }
-  .form form input{
-    border-top-left-radius:50px;
-    border-top-right-radius:50px;
-    border-bottom-left-radius:50px;
-    border-bottom-right-radius:50px;
-  }
-  .form form button{
-    border-top-left-radius:50px;
-    border-top-right-radius:50px;
-    border-bottom-left-radius:50px;
-    border-bottom-right-radius:50px;
-    background-color:#000000;
-    color:#ffffff;
-    display: block;
-    margin: 0 auto;
-  }
-  .form form a{
-    color:#ffffff;
-  }
+    top: 0;
+    left: 0;
+    margin-top: 13px;
+    transition: all .3s ease-out;
+}
+
+.label-float input:focus{
+    border-bottom: 2px solid #0356fcd6;
+}
+
+.label-float input:focus + label,
+.label-float input:valid + label {
+  font-size: 13px;
+  margin-top: 0;
+  color: #0356fcd6;
+}
+button{
+    background-color: transparent;
+    border-color: #0356fcd6;
+    color: #0356fcd6;
+    padding: 7px;
+    font-weight: bold;
+    font-size: 12pt;
+    margin-top:20px;
+    border-radius: 4px;
+    cursor: pointer;
+    outline: none;
+    transition: all .4s ease-out;
+}
+button:hover{
+background-color: #0356fcd6;
+color: #fff;
+}
+
+.justify-center{
+    display: flex;
+    justify-content: center;
+}
 
 /* topnav */
   .topnav {
