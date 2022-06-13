@@ -1,0 +1,96 @@
+/* Import Google Fonts */
+@import url("//fonts.googleapis.com/css2?family=Bungee+Shade:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+/* form */
+  .form form{
+    left: 50%;
+    top: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    border-style:solid;
+    border-color:#ff1919;
+    border-width:2px;
+    padding-left:22px;
+    padding-right:22px;
+    padding-top:22px;
+    padding-bottom:22px;
+    border-top-left-radius:22px;
+    border-top-right-radius:22px;
+    border-bottom-left-radius:22px;
+    border-bottom-right-radius:22px;
+    box-shadow:0px 0px 22px 11px #f6eea1;
+  }
+  .form form h1{
+    font-family:'Bungee Shade', display;
+    text-align:center;
+  }
+  .form form input{
+    border-top-left-radius:50px;
+    border-top-right-radius:50px;
+    border-bottom-left-radius:50px;
+    border-bottom-right-radius:50px;
+  }
+  .form form button{
+    border-top-left-radius:50px;
+    border-top-right-radius:50px;
+    border-bottom-left-radius:50px;
+    border-bottom-right-radius:50px;
+    background-color:#000000;
+    color:#ffffff;
+    display: block;
+    margin: 0 auto;
+  }
+  .form form a{
+    color:#ffffff;
+  }
+
+/* topnav */
+  .topnav {
+    background-color: #333333;
+    overflow: hidden;
+  }
+  .topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    padding-left:55px;
+    padding-right:55px;
+  }
+  .topnav a:hover {
+    background-color: #dddddd;
+    color: black;
+  }
+  .topnav .active {
+    background-color: #04AA6D;
+  }
+
+/* Table */
+  .table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  }
+  .table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+  }
+  .table th,
+  .table td {
+    padding: 12px 15px;
+  }
+  .table tbody tr {
+    border-bottom: 1px solid #dddddd;
+  }
+  .table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+  }
+  .table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+  }
