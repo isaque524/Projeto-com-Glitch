@@ -5,146 +5,77 @@
     padding: 0;
     font-family: 'Roboto', sans-serif;
 }
-
-
 body{
-    background-image: url(../imagens/yPsA2WR.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
+    background-color: rgb(1, 4, 9);
+    font-family: sans-serif;
+    font-weight: 300;
 }
-
-.container{
+.box{
+    background-color: rgb(13, 17, 23);
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 10px;
+    border: solid 0.2px rgb(152, 158, 164);  
+}
+form{
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    width: 100%;
-    margin-top: 180px;
+    align-items: center;
 }
-.card{
-    background: rgba(146, 162, 239, 0.3);
-    padding: 30px;
-    border-radius: 4%;
-    box-shadow: 3px 3px 1px 0px ; 
-}
-
 h1{
     text-align: center;
-    margin-bottom: 20px;
-    color: #0356fcd6;
+    color: aliceblue;
+    margin: 30px;
+    font-size: 40px;
 }
-
-.label-float input{
-    width: 100%;
-    padding: 5px 5px;
-    display: inline-block;
-    border: 0;
-    border-bottom: 2px solid #0356fcd6;
-    background-color: transparent;
-    outline: none;
-    min-width: 180px;
-    font-size: 16px;
-    transition: all .3s ease-out;
-    border-radius: 0;
+input{
+    color: aliceblue;
+    font-weight: 300;
 }
-
-.label-float{
-    position: relative;
-    padding-top: 13px;
-    margin-top: 5%;
-    margin-bottom: 5%;
-}
-
-
-.label-float label{
-    color: #fff;
-    pointer-events: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin-top: 13px;
-    transition: all .3s ease-out;
-}
-
-.label-float input:focus{
-    border-bottom: 2px solid #0356fcd6;
-}
-
-.label-float input:focus + label,
-.label-float input:valid + label {
-  font-size: 13px;
-  margin-top: 0;
-  color: #0356fcd6;
-}
-button{
-    background-color: transparent;
-    border-color: #0356fcd6;
-    color: #0356fcd6;
-    padding: 7px;
-    font-weight: bold;
-    font-size: 12pt;
-    margin-top:20px;
-    border-radius: 4px;
-    cursor: pointer;
-    outline: none;
-    transition: all .4s ease-out;
-}
-button:hover{
-background-color: #0356fcd6;
-color: #fff;
-}
-
-.justify-center{
-    display: flex;
-    justify-content: center;
-}
-
-/* topnav */
-  .topnav {
-    background-color: #333333;
-    overflow: hidden;
-  }
-  .topnav a {
-    float: left;
-    color: #f2f2f2;
+.input{
     text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-    padding-left:55px;
-    padding-right:55px;
-  }
-  .topnav a:hover {
-    background-color: #dddddd;
-    color: black;
-  }
-  .topnav .active {
-    background-color: #04AA6D;
-  }
+    font-size: 16px;
+    font-weight: 300;
+    width: 180px;
+    height: 50px;
+    margin: 15px;
+    border-radius: 24px;
+    background-color: rgb(13, 17, 23);
+    border: solid 2px rgb(71, 71, 219);
+    color: aliceblue;
+    outline: 0;
+    transition: 0.3s;
+}
+.input:focus{
+    width: 250px;
+    border: solid 2px rgb(35, 134, 54)  ;
+}
+.button{
+   margin: 10px;
+   width: 150px;
+   height: 50px;
+   border-radius: 24px;
+   font-size: 20px;
+   background-color: rgb(13, 17, 23);
+   color: aliceblue;
+   border: solid 1px rgb(35, 134, 54);
+   transition: 0.5s;
+}
+.button:hover{
+    background-color: rgb(62, 165, 62);
+    
+}
+p{
+    padding-left: 50px;
+    margin: 15px;
+    color: #f9f9ff;
+}
+a{
 
-/* Table */
-  .table {
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 0.9em;
-    font-family: sans-serif;
-    min-width: 400px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-  }
-  .table thead tr {
-    background-color: #009879;
-    color: #ffffff;
-    text-align: left;
-  }
-  .table th,
-  .table td {
-    padding: 12px 15px;
-  }
-  .table tbody tr {
-    border-bottom: 1px solid #dddddd;
-  }
-  .table tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
-  }
-  .table tbody tr:last-of-type {
-    border-bottom: 2px solid #009879;
-  }
+    color:rgb(22, 128, 203)
+}
