@@ -4,8 +4,8 @@ const db     = require("./sqlite.js");
 module.exports = {
   
   // Validate Authentication Cookie
-  isValid: async(Authentication) => {
-    console.log("exec isValid");
+  validC: async(Authentication) => {
+    console.log("validando o cookie");
     // Exists ?
       if( Authentication == null || Authentication == undefined ) {
         console.error("User not Authenticated")
@@ -15,7 +15,7 @@ module.exports = {
       let credentials = Base64.decode(Authentication).split(":");
       let result = await db.getPassword(credentials[0], credentials[1]);
       if( result.length === 0 ){
-        console.error("Bad Cookie Value")
+        console.error("Cookie incorreto")
         return false;
       }
     
