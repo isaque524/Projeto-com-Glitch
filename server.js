@@ -55,11 +55,6 @@
   }
 
 
-
-
-/*
-    Run the server and report out to the logs
-*/ 
   fastify.listen(process.env.PORT, '0.0.0.0', function(err, address) {
     if (err) {
       fastify.log.error(err);
