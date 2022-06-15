@@ -37,7 +37,7 @@ dbWrapper.open( {filename: dbFile, driver: sqlite3.Database} )
 module.exports = {
   
   // Encontrar usuário no banco de dados
-  Usuario: async(usuario) => {
+  ProcurarUsuario: async(usuario) => {
     console.log(`Procurando usuário ${usuario}`);
     try {
       let select = db.all(`SELECT * FROM usuarios WHERE usuario="${usuario}"`);
@@ -49,8 +49,8 @@ module.exports = {
   },
   
   // Procurar usuário e senha no banco de dados
-  UsuarioSenha: async(usuario, senha) => {
-    console.log(`Procurando se a senha do usuário ${usuario} bate com a senha`);
+  ProcurarUsuarioSenha: async(usuario, senha) => {
+    console.log(`Procurando usuário ${usuario} e sua senha`);
     try {
       let select = db.all(`SELECT * FROM usuarios WHERE usuario="${usuario}" and senha="${senha}"`);
       return select;
@@ -60,12 +60,12 @@ module.exports = {
     }
   },
   
-  // Criar usuario no banco de dados
-  createUser: async(user, password) => {
-    console.log("exec getPassword");
+  // Criar usuário no banco de dados
+  CriarUsuario: async(usuario, senha) => {
+    console.log(`Criando o usuário ${usuario}`);
     try {
       await db.run(
-        `INSERT INTO users (user, password) VALUES ("${user}", "${password}")`
+        `INSERT INTO usuarios (usuario, senha) VALUES ("${usuario}", "${senha}")`
       );
       
     } catch (dbError) {
