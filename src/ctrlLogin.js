@@ -1,64 +1,72 @@
-const seo = require("../seo.json");
-const db  = require("../sqlite.js");
+const seo    = require("./seo.json");
+const db     = require("./sqlite.js");
+const Base64 = require("js-base64");
 var servidor = null
 
 module.exports = {
   
-  listen: async(servidor) => {
+  configurar: async(servidor) => {
+    servidor.get("/", module.exports.viewLogin);
+    servidor.post("/", module.exports.validaLogin);
+  },
+  
+  viewLogin: async(request, reply) => {
+    console.log("viewLogin sendo executado");
 
-    servidor.get("/cadastro", module.exports.viewCadastro);
-    servidor.post("/cadastro", module.exports.validaCadastro);
-  },
-  
-  viewCadastro: async(request, reply) => {
-    console.log("cadastro de usuario em execução");
       let params = { seo: seo };
-      reply.view("/src/pages/cadastro.hbs", params);
+      reply.view("/src/pages/login.hbs", params);
   },
   
-  validaCadastro: async(request, reply) => {
-    console.log("validaCadastro em execuçaõ");
+  validaLogin: async(request, reply) => {
+    console.log("validaLogin sendo executado");
+    
       let params = { seo: seo };
     
-        let user = request.body.user;
-        if( user.length < 1 || user.length > 20 ){
-          console.error("Minimo de caracter  1  maximo 20 Caracteres")
-          params.error = "Minimo de caracter  1  maximo 20 Caracteres";
-          reply.view("/src/pages/cadastro.hbs", params);
-          return;
-        }
-        let password = request.body.password;
-        if( password.length < 1 || password.length > 20 ){
-          console.error("Minimo de caracter  1  maximo 20 Caracteres")
-          params.error = "Minimo de caracter  1  maximo 20 Caracteres";
-          reply.view("/src/pages/cadastro.hbs", params);
-          return;
-        }
-        if( user.includes(":") ){
-          console.error("Caracter especial não permitido")
-          params.error = "Caracter especial não permitido";
-          reply.view("/src/pages/cadastro.hbs", params);
-          return;
-        }
-      if( user.includes(":") ){
-        console.error("Caracter especial não permitido")
-        params.error = "Caracter especial não permitido";
-        reply.view("/src/pages/cadastro.hbs", params);
+      let user = request.body.user;
+      if( user.length < 1 || user.length > 20 ){
+        console.error("Minimo de caracter  1  maximo 20 Caracteres")
+        params.error = "Minimo de caracter  1  maximo 20 Caracteres";
+        reply.view("/src/pages/login.hbs", params);
         return;
       }
+      let password = request.body.password;
+      if( password.length < 1 || password.length > 20 ){
+        console.error("Minimo de caracter  1  maximo 20 Caracteres")
+        params.error = "Minimo de caracter  1  maximo 20 Caracteres";
+        reply.view("/src/pages/login.hbs", params);
+        return;
+      }      
       
-        let result = await db.getUser(user);
-        if( result.length != 0 ){
-          console.error("Usuário já existente")
-          params.error = "Usuário já existente";
-          reply.view("/src/pages/cadastro.hbs", params);
+      var result;
+          result = await db.getUser(user);
+        if( result.length === 0 ){
+          console.error("Login incorreto")
+          params.error = "Login incorreto";
+          reply.view("/src/pages/login.hbs", params);
+          return;
+        }
+        result = await db.getPassword(user, password);
+        if( result.length === 0 ){
+          console.error("Senha incorreta")
+          params.error = "Senha incorreta";
+          reply.view("/src/pages/login.hbs", params);
           return;
         }
     
-        await db.createUser(user, password);
+      let basic_authentication = Base64.encode( `${user}:${password}` );
+      reply.setCookie('Authentication', basic_authentication, {
+        domain: `${process.env.PROJECT_DOMAIN}.glitch.me`,
+        path: '/',
+        maxAge: 60 * 22, // 22 minutes
+        secure: true,
+        sameSite: 'lax',
+        httpOnly: true
+      });
+      request.cookies.Authentication = basic_authentication;
     
-      console.log(`User: ${user} successfully created`);
-      reply.view("/src/pages/login.hbs", params);
+    // Success
+      console.log(`User: ${user} successfully logged in`);
+      await ctrl.viewBooks(request, reply);
   }
   
 };
