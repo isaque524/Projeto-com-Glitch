@@ -1,5 +1,5 @@
 const fs = require("fs");
-const dbFile = "./.data/farmacia.db";
+const dbFile = "./.data/jogos.db";
 const exists = fs.existsSync(dbFile);
 const sqlite3 = require("sqlite3").verbose();
 const dbWrapper = require("sqlite");
@@ -14,7 +14,7 @@ dbWrapper.open( {filename: dbFile, driver: sqlite3.Database} )
       // Banco de dados não existe
       if (!exists) {
           // Tabela usuário
-          console.log("Criando o banco de dados da Farmacia");
+          console.log("Criando o banco de dados jogos");
           await db.run(
             "CREATE TABLE usuarios (id_usuario INTEGER PRIMARY KEY AUTOINCREMENT, usuario VARCHAR[30], senha VARCHAR[200])"
           );

@@ -10,7 +10,7 @@ servidor.register(require("point-of-view"), {
 });
 servidor.register(require("fastify-static"), {
   root: path.join(__dirname, "public"),
-  prefix: "/" 
+  prefix: "/"
 });
 servidor.register(require('fastify-cookie'), {
   secret: `${process.env.COOKIE_SECRET}`,

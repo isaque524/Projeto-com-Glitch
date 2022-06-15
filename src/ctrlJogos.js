@@ -6,7 +6,7 @@ module.exports = {
   
   configurar: async(servidor) => {
     servidor.get("/jogos", module.exports.viewJogos);
-    servidor.post("/jogos", module.exports.validarCadastro);
+    servidor.post("/jogos", module.exports.viewJogos);
   },
   
   viewJogos: async(request, reply) => {
@@ -15,7 +15,7 @@ module.exports = {
     let valido = await cookie.validacao(request.cookies.Autenticacao);
     if( !valido ){
       params.error = "Usuário deve se autenticar";
-      reply.view("/src/pages/index.hbs", params);
+      reply.view("/src/Paginas/index.hbs", params);
       return;
     }
     
