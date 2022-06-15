@@ -65,9 +65,8 @@ module.exports = {
   ProcurarCadastro: async(usuario) => {
     console.log(`Procurando pelo usuario ${usuario}`);
     try {
-      await db.all(
-        `SELECT * FROM usuarios WHERE usuario="${usuario}"`
-      );
+      let select = await db.all(`SELECT * FROM usuarios WHERE usuario="${usuario}"`);
+      return select;
       
     } catch (dbError) {
       console.error(dbError);

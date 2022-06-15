@@ -32,8 +32,8 @@
   <div class="box">
             <form method="POST" action="/cadastro">
                 <h1>Cadastro</h1>
-                <input class="input" type="text" name="usuario" placeholder="Usuario" required autocomplete="off">
-                <input class="input" type="text" name="senha" placeholder="Senha" required autocomplete="off">
+                <input class="input" type="text" name="usuario" id="usuario" placeholder="Usuario" required autocomplete="off">
+                <input class="input" type="password" name="senha" id="senha" placeholder="Senha" required autocomplete="off">
                 <input class="button" type="submit" value="Entrar">
             </form>
       {{#if error}}
