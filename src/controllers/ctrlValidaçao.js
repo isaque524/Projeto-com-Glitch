@@ -8,7 +8,7 @@ module.exports = {
   listen: async(servidor) => {
      
     servidor.get("/", module.exports.viewLogin);
-    servidor.post("/", module.exports.validateLogin);
+    servidor.post("/", module.exports.validaLogin);
   },
   
   viewLogin: async(request, reply) => {

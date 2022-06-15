@@ -4,11 +4,8 @@
  * Server API calls the methods in here to query and update the SQLite database
  */
 
-// Utilities we need
 const fs = require("fs");
-
-// Initialize the database
-const dbFile = "./.data/library.db";
+const dbFile = "./.data/farmacia.db";
 const exists = fs.existsSync(dbFile);
 const sqlite3 = require("sqlite3").verbose();
 const dbWrapper = require("sqlite");
@@ -21,21 +18,20 @@ We're using the sqlite wrapper so that we can make async / await connections
 dbWrapper.open( {filename: dbFile, driver: sqlite3.Database} )
   .then(async (dBase) => {
     db = dBase;
-
-    // We use try and catch blocks throughout to handle any database errors
+  
     try {
-      // Database doesn't exist yet
+      // Database não existe
       if (!exists) {
-        // Create users table
-          console.log("Criando o Database users");
+          // Tabela usuário
+          console.log("Criando o Database usuarios");
           await db.run(
-            "CREATE TABLE users (id INTEGER PRIMARY KEY AUTOINCREMENT, user VARCHAR[20], password VARCHAR[20])"
+            "CREATE TABLE usuarios (id_usuario INTEGER PRIMARY KEY AUTOINCREMENT, usuario VARCHAR[30], senha VARCHAR[200])"
           );
-          // Add default Admin user to the table
+          // Usuário Admin
           await db.run(
-            `INSERT INTO users (user, password) VALUES ("Admin", "${process.env.ADMIN_PASSWORD}")`
+            `INSERT INTO usuarios (usuario, senha) VALUES ("Administrador", "${process.env.ADMIN_PASSWORD}")`
           );
-        // Create books table
+          // Create books table
           console.log("Criando o Database books");
           await db.run(
             "CREATE TABLE books (isbn INTEGER PRIMARY KEY, name VARCHAR[40], author VARCHAR[40], quantity INTEGER)"
