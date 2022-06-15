@@ -22,41 +22,31 @@ module.exports = {
     const usuario = request.body.usuario;
     const senha = request.body.senha;
     if( senha.length > 20 || usuario.length > 20 ){
-      params.error = "Usuário deve possuir entre 6 e 20 Caracteres";
+      params.error = "Usuário e Senha devem possuir o máximo de 20 Caracteres";
       reply.view("/src/Paginas/index.hbs", params);
       return;
-    } 
+    }
+     
+    let select = await db.ProcurarUsuario(usuario, Base64.encode(senha));
+    if( select.length == 0 ){
+      params.error = "Usuario ou Senha Incorreta";
+      reply.view("/src/Paginas/index.hbs", params);
+      return;
+    }
 
-    var result;
-        result = await db.getUser(user);
-      if( result.length === 0 ){
-        console.error("Login incorreto")
-        params.error = "Login incorreto";
-        reply.view("/src/Paginas/index.hbs", params);
-        return;
-      }
-      result = await db.getPassword(user, password);
-      if( result.length === 0 ){
-        console.error("Senha incorreta")
-        params.error = "Senha incorreta";
-        reply.view("/src/Paginas/index.hbs", params);
-        return;
-      }
-
-    let basic_authentication = Base64.encode( `${user}:${password}` );
-    reply.setCookie('Authentication', basic_authentication, {
+    let Autenticacao = Base64.encode( `${usuario}:${senha}` );
+    reply.setCookie('Autenticacao', Autenticacao, {
       domain: `${process.env.PROJECT_DOMAIN}.glitch.me`,
       path: '/',
-      maxAge: 60 * 22, // 22 minutes
+      maxAge: 60 * 60, // 1 hora
       secure: true,
       sameSite: 'lax',
       httpOnly: true
     });
-    request.cookies.Authentication = basic_authentication;
-
-  // Success
-    console.log(`User: ${user} successfully logged in`);
-    await ctrl.viewBooks(request, reply);
+    request.cookies.Authentication = Autenticacao;
+    
+    console.log(`Usuario ${usuario} autenticado`);
+    reply.view("/src/Paginas/farmacia.hbs")
   }
   
 };

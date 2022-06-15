@@ -1,11 +1,12 @@
 const seo = require("./seo.json");
 const db  = require("./sqlite.js");
+const Base64 = require("js-base64");
 
 module.exports = {
   
   configurar: async(servidor) => {
     servidor.get("/cadastro", module.exports.viewCadastro);
-    servidor.post("/cadastro", module.exports.validaCadastro);
+    servidor.post("/cadastro", module.exports.validarCadastro);
   },
   
   viewCadastro: async(request, reply) => {
@@ -14,7 +15,7 @@ module.exports = {
       reply.view("/src/Paginas/cadastro.hbs", params);
   },
   
-  validaCadastro: async(request, reply) => {
+  validarCadastro: async(request, reply) => {
     console.log("validaCadastro em execuçaõ");
       let params = { seo: seo };
     

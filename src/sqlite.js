@@ -37,24 +37,12 @@ dbWrapper.open( {filename: dbFile, driver: sqlite3.Database} )
 module.exports = {
   
   // Encontrar usuário no banco de dados
-  ProcurarUsuario: async(usuario) => {
+  ProcurarUsuario: async(usuario, senha) => {
     console.log(`Procurando usuário ${usuario}`);
-    try {
-      let select = db.all(`SELECT * FROM usuarios WHERE usuario="${usuario}"`);
-      return select;
-    
-    } catch (dbError) {
-      console.error(dbError);
-    }
-  },
-  
-  // Procurar usuário e senha no banco de dados
-  ProcurarUsuarioSenha: async(usuario, senha) => {
-    console.log(`Procurando usuário ${usuario} e sua senha`);
     try {
       let select = db.all(`SELECT * FROM usuarios WHERE usuario="${usuario}" and senha="${senha}"`);
       return select;
-      
+    
     } catch (dbError) {
       console.error(dbError);
     }
