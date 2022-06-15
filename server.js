@@ -13,7 +13,7 @@ servidor.register(require("fastify-static"), {
   prefix: "/" 
 });
 servidor.register(require('fastify-cookie'), {
-  secret: `${process.env.COOKIE_SECRET}`, // Secret Key
+  secret: `${process.env.COOKIE_SECRET}`,
   parseOptions: {}
 });
 servidor.listen(process.env.PORT, '0.0.0.0', function(err, address) {
