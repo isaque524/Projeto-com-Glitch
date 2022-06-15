@@ -1,96 +1,74 @@
-/**
- * Module handles database management
- *
- * Server API calls the methods in here to query and update the SQLite database
- */
-
 const fs = require("fs");
 const dbFile = "./.data/farmacia.db";
 const exists = fs.existsSync(dbFile);
 const sqlite3 = require("sqlite3").verbose();
 const dbWrapper = require("sqlite");
+const Base64 = require("js-base64");
 let db;
 
-/* 
-We're using the sqlite wrapper so that we can make async / await connections
-- https://www.npmjs.com/package/sqlite
-*/
 dbWrapper.open( {filename: dbFile, driver: sqlite3.Database} )
   .then(async (dBase) => {
     db = dBase;
   
     try {
-      // Database não existe
+      // Banco de dados não existe
       if (!exists) {
           // Tabela usuário
-          console.log("Criando o Database usuarios");
+          console.log("Criando o banco de dados da Farmacia");
           await db.run(
             "CREATE TABLE usuarios (id_usuario INTEGER PRIMARY KEY AUTOINCREMENT, usuario VARCHAR[30], senha VARCHAR[200])"
           );
           // Usuário Admin
           await db.run(
-            `INSERT INTO usuarios (usuario, senha) VALUES ("Administrador", "${process.env.ADMIN_PASSWORD}")`
+            `INSERT INTO usuarios (usuario, senha) VALUES ("Administrador", "${Base64.encode(process.env.ADMIN_KEY)}")`
           );
-          // Create books table
-          console.log("Criando o Database books");
-          await db.run(
-            "CREATE TABLE books (isbn INTEGER PRIMARY KEY, name VARCHAR[40], author VARCHAR[40], quantity INTEGER)"
-          );
-          // Add default books to the table
-          await db.run(
-            "INSERT INTO books (isbn, name, author, quantity) VALUES (8532530788, 'Harry Potter e a Pedra Filosofal', 'J.K. Rowling', 1), (8556510787, 'A Guerra dos Tronos', 'GEORGE R. R. MARTIN', 2), (8599296361, 'A cabana', 'William Paul Young', 3)"
-          );
-
-        // We have a database already - write users records to log for info
+        
       } else {
-        console.log("Database already exists");
-        //console.log( await db.all("SELECT * FROM users") )
-        //console.log( await db.all("SELECT * FROM books") )
+        console.log("Banco de dados existente");
+        console.log( await db.all("SELECT * FROM usuarios") )
       }
+      
     } catch (dbError) {
       console.error(dbError);
-    } 
+    }
+  
   });
 
-// Our server script will call these methods to connect to the db
 module.exports = {
   
-  // Find user in the database
-  getUser: async(user) => {
-    console.log("getUser em execução");
-    // We use a try catch block in case of db errors
+  // Encontrar usuário no banco de dados
+  Usuario: async(usuario) => {
+    console.log(`Procurando usuário ${usuario}`);
     try {
-      let result = db.all(`SELECT * FROM users WHERE user="${user}"`);
-      return result;
+      let select = db.all(`SELECT * FROM usuarios WHERE usuario="${usuario}"`);
+      return select;
+    
     } catch (dbError) {
-      // Database connection error
       console.error(dbError);
     }
   },
   
-  // Check specific password from user in the database
-  getPassword: async(user, password) => {
-    console.log("getPassword em execução");
-    // We use a try catch block in case of db errors
+  // Procurar usuário e senha no banco de dados
+  UsuarioSenha: async(usuario, senha) => {
+    console.log(`Procurando se a senha do usuário ${usuario} bate com a senha`);
     try {
-      let result = db.all(`SELECT * FROM users WHERE user="${user}" and password="${password}"`);
-      return result;
+      let select = db.all(`SELECT * FROM usuarios WHERE usuario="${usuario}" and senha="${senha}"`);
+      return select;
+      
     } catch (dbError) {
-      // Database connection error
       console.error(dbError);
     }
   },
   
-  // Create a new user in the database
+  // Criar usuario no banco de dados
   createUser: async(user, password) => {
     console.log("exec getPassword");
-    // We use a try catch block in case of db errors
     try {
       await db.run(
         `INSERT INTO users (user, password) VALUES ("${user}", "${password}")`
       );
+      
     } catch (dbError) {
-      // Database connection error
       console.error(dbError);
     }
   },
