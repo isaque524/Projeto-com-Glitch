@@ -10,54 +10,39 @@ module.exports = {
   },
   
   viewCadastro: async(request, reply) => {
-    console.log("cadastro de usuario em execução");
-      let params = { seo: seo };
-      reply.view("/src/Paginas/cadastro.hbs", params);
+    console.log("Pagina de Cadastro GET /cadastro");
+    let params = { seo: seo };
+    reply.view("/src/Paginas/cadastro.hbs", params);
   },
   
   validarCadastro: async(request, reply) => {
-    console.log("validaCadastro em execuçaõ");
-      let params = { seo: seo };
+    console.log("Pagina de Cadastro POST /cadastro");
+    let params = { seo: seo };
+
+    const usuario = request.body.usuario;
+    const senha = request.body.senha;
+    if( senha.length > 20 || usuario.length > 20 ){
+      params.error = "Usuário e Senha devem possuir o máximo de 20 Caracteres";
+      reply.view("/src/Paginas/cadastro.hbs", params);
+      return;
+    }
     
-        let user = request.body.user;
-        if( user.length < 1 || user.length > 20 ){
-          console.error("Minimo de caracter  1  maximo 20 Caracteres")
-          params.error = "Minimo de caracter  1  maximo 20 Caracteres";
-          reply.view("/src/Paginas/cadastro.hbs", params);
-          return;
-        }
-        let password = request.body.password;
-        if( password.length < 1 || password.length > 20 ){
-          console.error("Minimo de caracter  1  maximo 20 Caracteres")
-          params.error = "Minimo de caracter  1  maximo 20 Caracteres";
-          reply.view("/src/Paginas/cadastro.hbs", params);
-          return;
-        }
-        if( user.includes(":") ){
-          console.error("Caracter especial não permitido")
-          params.error = "Caracter especial não permitido";
-          reply.view("/src/Paginas/cadastro.hbs", params);
-          return;
-        }
-      if( user.includes(":") ){
-        console.error("Caracter especial não permitido")
-        params.error = "Caracter especial não permitido";
-        reply.view("/src/Paginas/cadastro.hbs", params);
-        return;
-      }
-      
-        let result = await db.getUser(user);
-        if( result.length != 0 ){
-          console.error("Usuário já existente")
-          params.error = "Usuário já existente";
-          reply.view("/src/Paginas/cadastro.hbs", params);
-          return;
-        }
-    
-        await db.createUser(user, password);
-    
-      console.log(`User: ${user} successfully created`);
-      reply.view("/src/Paginas/login.hbs", params);
+    if( usuario.includes(":") || senha.includes(":") ){
+      params.error = "Caracter reservado não permitido";
+      reply.view("/src/Paginas/cadastro.hbs", params);
+      return;
+    }
+
+    let select = await db.ProcurarCadastro(usuario);
+    if( select.length != 0 ){
+      params.error = "Usuário já existente";
+      reply.view("/src/Paginas/cadastro.hbs", params);
+      return;
+    }
+
+    await db.CriarUsuario(usuario, Base64.encode(senha));
+    console.log(`Usuario ${usuario} cadastrado no banco de dados`);
+    reply.view("/src/Paginas/index.hbs", params);
   }
   
 };

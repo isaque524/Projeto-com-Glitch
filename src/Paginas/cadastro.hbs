@@ -29,19 +29,17 @@
 </head>
 
 <body>
-  <div class="form">
-    <form method="post" action="/cadastro">
-      <h1>Cadastro</h1>
-      <label>Usuario</label><br/>
-      <input type="text" id="user" name="user" required /><br/>
-      <label>Senha</label><br/>
-      <input type="password" id="password" name="password" required /><br/><br/>
+  <div class="box">
+            <form method="POST" action="/cadastro">
+                <h1>Cadastro</h1>
+                <input class="input" type="text" name="usuario" placeholder="Usuario" required autocomplete="off">
+                <input class="input" type="text" name="senha" placeholder="Senha" required autocomplete="off">
+                <input class="button" type="submit" value="Entrar">
+            </form>
       {{#if error}}
         <label>Erro: {{error}}</label>
         <br/><br/>
       {{/if}}
-      <button type="submit">Enviar</button>
-    </form>
   </div>
 </body>
 

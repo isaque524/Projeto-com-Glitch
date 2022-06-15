@@ -61,4 +61,17 @@ module.exports = {
     }
   },
   
+  // Procurar se usuario já existe
+  ProcurarCadastro: async(usuario) => {
+    console.log(`Procurando pelo usuario ${usuario}`);
+    try {
+      await db.all(
+        `SELECT * FROM usuarios WHERE usuario="${usuario}"`
+      );
+      
+    } catch (dbError) {
+      console.error(dbError);
+    }
+  },
+  
 };
