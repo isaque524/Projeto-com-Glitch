@@ -1,104 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="./imagens/Video_game_controller_icon_designed_by_Maico_Amorim.svg.png" type="imagens/png">
-    <title>Jogo da cobrinha</title>
+const seo = require("./seo.json");
+const db  = require("./sqlite.js");
+const cookie = require("./cookie.js");
 
-    <script src="https://kit.fontawesome.com/723f0cb31d.js" crossorigin="anonymous"></script>
-
-    <style>
-        @font-face {
-  font-family: "game";
-  src: url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;800&display=swap");
-}
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-button:focus {
-  outline: 0;
-}
-
-html,
-body {
-  height: 100%;
-  font-family: "Poppins", sans-serif;
-  background-color:#2980b9;
- background-image:linear-gradient(87deg, #8e0e00 0%, #1f1c18 56%);
-}
-body {
-  background-color: #22283c;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #6e7888;
-}
-
-.noselect {
-  user-select: none;
-}
-#replay {
-  font-size: 10px;
-  padding: 10px 20px;
-  border: none;
-  color: #222738;
-  border-radius: 20px;
-  font-weight: 800;
-  background-color:#2980b9;
- background-image:linear-gradient(to right, #67b26f 0%, #4ca2cd 100%);
-}
-#replay:hover {
-    background-image:linear-gradient(to right, #23074d 0%, #cc5333 100%);
-    color: white;
-  
-}
-
-#scr{
-    display: flex;
-  align-items: center;
-  font-size: 10px;
-  flex-flow: column;
-  margin-left: 10px;
-  color:#2980b9;
- transform:translatex(-3px) translatey(22px);
- min-height:41px;
- font-size:17px;
- line-height:24.3px;
- 
-}
-    </style>
-    
-    <!-- fim do estilo começo do html -->
-
-    <div class="container noselect">
-        <div class="wrapper">
-            <button id="replay">
-                <i class="fas fa-play"></i>
-                RESTART
-            </button>
-    
-            <div id="scr">
-                <h2>score</h2>
-                <span id="score">00</span>
-            </div>
-
-        </div>
-     </div>
-
-</head>
-<body>
-
- <canvas id="stage" width="600" height="600"></canvas>
-
- 
-    <!-- fim do html começo do script -->
-
-    <script type="text/javascript">
-        let dom_replay = document.querySelector("#replay");
+  let dom_replay = document.querySelector("#replay");
         let dom_score = document.querySelector("#score");
         let snake,
         isGameOver = false,
@@ -118,7 +22,8 @@ body {
             const vel = 1;
             
             /* velocidade x e y */
-            var vx = vy = 0;
+            var vx =0; 
+            var vy = 0;
 
             /* ponto x e y */
             var px = 10;
@@ -131,11 +36,12 @@ body {
             var qp = 20;
 
             /* posição da maçã */
-            var ax=ay=15
+            var ax=15; 
+            var ay=15;
      
             /* corpo da cobra */
             var trail = [];
-            tail = 5;
+            var tail = 5;
 
             function incrementScore() {
                 score++;
@@ -239,7 +145,7 @@ function score2(score){
 }
 
 initialize();
+          
         }
-    </script>
-</body>
-</html>
+
+ 
