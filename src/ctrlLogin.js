@@ -47,6 +47,7 @@ module.exports = {
     
     console.log(`Usuario ${usuario} autenticado`);
     reply.view("/src/Paginas/jogos.hbs")
+    reply.view("/src/Paginas/snake.hbs")
   }
   
 };
