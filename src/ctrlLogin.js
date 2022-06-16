@@ -46,7 +46,9 @@ module.exports = {
     request.cookies.Authentication = Autenticacao;
     
     console.log(`Usuario ${usuario} autenticado`);
-    reply.view("/src/Paginas/jogos.hbs")
+    reply.view("/src/Paginas/jogos.hbs");
+    
   }
+  
   
 };

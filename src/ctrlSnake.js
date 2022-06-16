@@ -1,6 +1,6 @@
-const seo = require("./seo.json");
-const db  = require("./sqlite.js");
-const cookie = require("./cookie.js");
+const seo    = require("./seo.json");
+const db     = require("./sqlite.js");
+const Base64 = require("js-base64");
 
   let dom_replay = document.querySelector("#replay");
         let dom_score = document.querySelector("#score");
@@ -144,8 +144,10 @@ function score2(score){
     
 }
 
+
 initialize();
           
         }
 
- 
+
+  
