@@ -1,12 +1,13 @@
 const seo = require("./seo.json");
 const db  = require("./sqlite.js");
 const Base64 = require("js-base64");
+const cookie = require("./cookie.js");
 
 module.exports = {
   
   configurar: async(servidor) => {
-    servidor.get("/jogoVelha", module.exports.viewCadastro);
-    servidor.post("/jogoVelha", module.exports.validarCadastro);
+    servidor.get("/jogoVelha", module.exports.viewJogoVelha);
+    //servidor.post("/jogoVelha", module.exports.);
   },
 
 
@@ -20,7 +21,7 @@ viewJogoVelha: async(request, reply) => {
       return;
     }
     
-    reply.view("/src/Paginas/jogosVelha.hbs", params);
+    reply.view("/src/Paginas/jogoVelha.hbs", params);
   },
 
 }
