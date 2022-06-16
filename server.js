@@ -6,7 +6,7 @@ servidor.register(require("fastify-formbody"));
 servidor.register(require("point-of-view"), {
   engine: {
     handlebars: require("handlebars")
-  }  
+  }   
 });
 servidor.register(require("fastify-static"), {
   root: path.join(__dirname, "public"),
