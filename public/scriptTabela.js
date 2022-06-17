@@ -45,13 +45,13 @@ class Produto{
          //Ação editar e excluir//
 
          let imgEdit = document.createElement('img');
-         imgEdit.src = 'img/editing.png';
+         imgEdit.src = 'https://cdn.glitch.global/a9ca4aa8-5634-4864-a73b-fd4799e547e2/editing.png?v=1655479342435';
          imgEdit.setAttribute("onclick", "produto.editar("+JSON.stringify(this.arrayProdutos[i])+")");
         
 
 
          let imgDelete = document.createElement('img')
-         imgDelete.src = 'img/bin.png';
+         imgDelete.src = 'https://cdn.glitch.global/a9ca4aa8-5634-4864-a73b-fd4799e547e2/bin.png?v=1655479316965';
          imgDelete.setAttribute("onclick", "produto.deletar("+ this.arrayProdutos[i].id+")");
 
          td_acoes.appendChild(imgEdit);
