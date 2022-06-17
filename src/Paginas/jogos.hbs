@@ -8,9 +8,53 @@
     <title>Divirtam-se</title>
     </head>
 <body>
-  
 
+    <header>
+        <h1>Loja</h1>
+    </header>
+
+    <main>
+        <div class="title">
+
+            <h2>Produtos</h2>
+            <span>Lista de produtos da minha loja</span>
+
+        </div>
+        <div class="card">
+            <div class="lineInput">
+                <label for="">Produto</label>
+                <input type="text" id="produto" placeholder="Nome do produto">
+            </div>
+
+            <div class="lineInput">
+                <label>Preço</label>
+                <input type="number" id="preco" placeholder="Valor do produto">
+            </div>
+
+            <div class="lineInput">
+                <label>Quantidade</label>
+                <input type="number" id="quantidade" placeholder="Quantidade">
+            </div>
+        
+            <h1>Controle de Produto</h1>
+            <button onclick="produto.salvar()" id="bt1">Salvar</button>
+            <button onclick="produto.cancelar()">Cancelar</button>
+        </div>
+        <div class="content">
+            <table border="1">
+                <thead>
+                    <th class="center">ID</th>
+                    <th>Produto</th>
+                    <th>Valor</th>
+                    <th>Quantidade</th>
+                    <th class="center">Açoes</th>
+                </thead>
+                <tbody id="tbody">
+                    
+                </tbody>
+            </table>
+        </div>
+    </main>
     
-      
 </body>
 </html>
