@@ -14,14 +14,16 @@
 <body>
 
     <div class="conteudo">
+
         <h1>Lista de Tarefas</h1>
+        <h3>Data da tarefa</h3>
+        <input type="date" id="start" value="2018-07-22"min="2000-01-01" max="2100-12-31" >
         <div class="topo">
             <input type="text" id="inputNovaTarefa" placeholder="Adcione uma  nova tarefa">
             <button id="btnAddTarefa">
                 <i class="fa-thin fa-plus"></i>
             </button>
         </div>
-
         <ul id="listaTarefas">
         </ul>
     </div>
@@ -36,6 +38,7 @@
             <div class = "frm-linha">
                 <label for="nome">Nome</label>
                 <input type="text" id="inputTarefaNomeEdicao">
+                <input type="date" id="inputTarefaNomeEdicao" name="trip-start"value="2018-07-22"min="2000-01-01" max="2100-12-31">
             </div>
             <div class="frm-linha">
                 <button id="btnAtualizarTarefa">Salvar</button>

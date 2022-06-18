@@ -1,4 +1,4 @@
- body {
+  body {
     background: #000;
     color: #FFF;
     margin: 0;
@@ -15,12 +15,19 @@
     background: #2b2a2a;
     padding: 55px;
     border-radius: 12px;
+    
 }
 
 .topo {
    display: flex;
    justify-content: space-between;
    margin-bottom: 35px;     
+}
+.conteudo .topo{
+ transform:translatex(4px) translatey(30px);
+}
+.conteudo h1{
+ transform:translatex(-10px) translatey(0px);
 }
 
 .topo input {
@@ -79,12 +86,41 @@
 .btnAcao:hover {
     background: #3c3a3a;
 }
+#start{
+    position:relative;
+    border: 1px solid #191818;
+    outline: none;
+    font-size: 1.2rem;
+    background: #191818;
+    color: #FFF;
+    top:-17px;
+    left:-8px;
+}
+.conteudo h3{
+ position:relative;
+ top:-4px;
+ left:-4px;
+}
+
 
 .textoTarefa {
     overflow: hidden;
     text-overflow: ellipsis;
     width: 290px;
     white-space: nowrap;
+}
+#inputNovaTarefa{
+    position:relative;
+    top:-41px;
+    transform:translatex(-10px) translatey(-24px);
+    top:-12px;
+    left:-4px;
+}
+
+
+/* Add tarefa */
+#btnAddTarefa{
+    transform:translatex(-23px) translatey(-34px);
 }
 
 #janelaEdicao {
