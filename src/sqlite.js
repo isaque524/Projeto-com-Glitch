@@ -16,7 +16,7 @@ dbWrapper.open( {filename: dbFile, driver: sqlite3.Database} )
           // Tabela usuário
           console.log("Criando a tabela usuários");
           await db.run(
-            "CREATE TABLE usuarios (id_usuario INTEGER PRIMARY KEY AUTOINCREMENT, usuario VARCHAR[30], senha VARCHAR[200])"
+            "CREATE TABLE usuarios (id INTEGER PRIMARY KEY AUTOINCREMENT, usuario VARCHAR[30], senha VARCHAR[200])"
           );
           // Usuário Admin
           await db.run(
@@ -26,24 +26,24 @@ dbWrapper.open( {filename: dbFile, driver: sqlite3.Database} )
           // Tabela Jogos
           console.log("Criando a tabela jogos");
           await db.run(
-            "CREATE TABLE jogos (id_usuario INTEGER PRIMARY KEY AUTOINCREMENT, nome VARCHAR[30], descricao VARCHAR[200], imagem VARCHAR[100])"
+            "CREATE TABLE jogos (id INTEGER PRIMARY KEY AUTOINCREMENT, nome VARCHAR[30], descricao VARCHAR[200], imagem VARCHAR[100])"
           );
           // Jogos Padrões
           await db.run(
-            `INSERT INTO jogos (nome, descricao, imagem) VALUES (
+            `INSERT INTO jogos (nome, descricao, imagem) VALUES
               ("ELDEN RING", "Levante-se, Manchado, e seja guiado pela graça para brandir o poder do Elden Ring.", "https://cdn.glitch.global/a9ca4aa8-5634-4864-a73b-fd4799e547e2/elden.png?v=1655753287099"),
               ("GOD OF WAR", "Com a vingança contra os deuses do Olimpo no passado, Kratos agora vive no reino nórdico.", "https://cdn.glitch.global/a9ca4aa8-5634-4864-a73b-fd4799e547e2/good.webp?v=1655753345971"),
               ("FIFA", "EA SPORTS™ FIFA 22 deixa o jogo ainda mais real  e uma nova temporada de inovações em todos os modos.", "https://cdn.glitch.global/a9ca4aa8-5634-4864-a73b-fd4799e547e2/fifa-22-featured-image.png.adapt.crop16x9.575p.png?v=1655753298248"),
               ("FORZA", "Dirija centenas dos melhores carros do mundo e explore a paisagens do mundo aberto.", "https://cdn.glitch.global/a9ca4aa8-5634-4864-a73b-fd4799e547e2/thumb-1920-709880.jpg?v=1655753370976"),
               ("2K22", "Aprenda com os melhores do ramo quando quiser melhorar seus lances.", "https://cdn.glitch.global/a9ca4aa8-5634-4864-a73b-fd4799e547e2/header.jpg?v=1655753353655"),
               ("CUPHEAD", "Cuphead é um jogo de ação e tiros clássico,Inspirado nas animações infantis da década de 1930.", "https://cdn.glitch.global/a9ca4aa8-5634-4864-a73b-fd4799e547e2/cuphead.png?v=1655753278788")
-            )`
+            `
           );
         
       } else {
         console.log("Banco de dados existente");
         //console.log( await db.all("SELECT * FROM usuarios") );
-        console.log( await db.all("SELECT * FROM jogos") );
+        //console.log( await db.all("SELECT * FROM jogos") );
       }
       
     } catch (dbError) {
@@ -55,7 +55,7 @@ dbWrapper.open( {filename: dbFile, driver: sqlite3.Database} )
 module.exports = {
   
   // Encontrar usuário no banco de dados
-  ProcurarUsuario: async(usuario, senha) => {
+  ObterUsuario: async(usuario, senha) => {
     try {
       let select = db.all(`SELECT * FROM usuarios WHERE usuario="${usuario}" and senha="${senha}"`);
       return select;
@@ -78,9 +78,20 @@ module.exports = {
   },
   
   // Procurar se usuario já existe
-  ProcurarCadastro: async(usuario) => {
+  ProcurarUsuario: async(usuario) => {
     try {
       let select = await db.all(`SELECT * FROM usuarios WHERE usuario="${usuario}"`);
+      return select;
+      
+    } catch (dbError) {
+      console.error(dbError);
+    }
+  },
+  
+  // Obter todos os jogos no database
+  ObterJogos: async() => {
+    try {
+      let select = await db.all(`SELECT * FROM jogos`);
       return select;
       
     } catch (dbError) {

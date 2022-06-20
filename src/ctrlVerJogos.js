@@ -19,7 +19,12 @@ module.exports = {
       return;
     }
     
-    reply.view("/src/Paginas/jogos.hbs", { seo: seo });
+    let select = await db.ObterJogos();
+    
+    reply.view("/src/Paginas/jogos.hbs", { 
+      seo: seo,
+      jogos: select
+    });
   },
   
 }

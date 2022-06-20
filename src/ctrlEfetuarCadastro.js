@@ -28,7 +28,7 @@ module.exports = {
       return;
     }
 
-    let select = await db.ProcurarCadastro(usuario);
+    let select = await db.ProcurarUsuario(usuario);
     if( select.length != 0 ){
       reply.view("/src/Paginas/cadastro.hbs", { 
         seo: seo,

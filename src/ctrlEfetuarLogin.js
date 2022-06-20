@@ -1,6 +1,7 @@
 const seo    = require("./seo.json");
 const db     = require("./sqlite.js");
 const Base64 = require("js-base64");
+const jogos  = require("./ctrlVerJogos.js");
 
 module.exports = {
   
@@ -20,7 +21,7 @@ module.exports = {
       return;
     }
      
-    let select = await db.ProcurarUsuario(usuario, Base64.encode(senha));
+    let select = await db.ObterUsuario(usuario, Base64.encode(senha));
     if( select.length == 0 ){
       reply.view("/src/Paginas/index.hbs", { 
         seo: seo,
@@ -41,7 +42,7 @@ module.exports = {
     request.cookies.Authentication = Autenticacao;
     
     console.log(`Usuario ${usuario} autenticado`);
-    reply.view("/src/Paginas/jogos.hbs");
+    await jogos.verJogos(request, reply);
   }
   
 }
