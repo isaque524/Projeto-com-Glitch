@@ -14,13 +14,19 @@ dbWrapper.open( {filename: dbFile, driver: sqlite3.Database} )
       // Banco de dados não existe
       if (!exists) {
           // Tabela usuário
-          console.log("Criando o banco de dados jogos");
+          console.log("Criando a tabela usuários");
           await db.run(
             "CREATE TABLE usuarios (id_usuario INTEGER PRIMARY KEY AUTOINCREMENT, usuario VARCHAR[30], senha VARCHAR[200])"
           );
           // Usuário Admin
           await db.run(
             `INSERT INTO usuarios (usuario, senha) VALUES ("Administrador", "${Base64.encode(process.env.ADMIN_KEY)}")`
+          );
+          
+          // Tabela Jogos
+          console.log("Criando a tabela jogos");
+          await db.run(
+            "CREATE TABLE jogos (id_usuario INTEGER PRIMARY KEY AUTOINCREMENT, nome VARCHAR[30], descricao VARCHAR[200], url)"
           );
         
       } else {
