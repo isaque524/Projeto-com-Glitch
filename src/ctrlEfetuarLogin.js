@@ -5,25 +5,16 @@ const Base64 = require("js-base64");
 module.exports = {
   
   configurar: async(servidor) => {
-    servidor.get("/", module.exports.viewLogin);
-    servidor.post("/", module.exports.validarLogin);
+    servidor.post("/", module.exports.efetuarLogin);
   },
   
-  viewLogin: async(request, reply) => {
-    console.log("Pagina de Login GET /");
-    let params = { seo: seo };
-    reply.view("/src/Paginas/index.hbs", params);
-  },
-  
-  validarLogin: async(request, reply) => {
-    console.log("Pagina de Login POST /");
-    let params = { seo: seo };
+  efetuarLogin: async(request, reply) => {
 
     const usuario = request.body.usuario;
     const senha = request.body.senha;
     if( senha.length > 20 || usuario.length > 20 ){
       params.error = "Usuário e Senha devem possuir o máximo de 20 Caracteres";
-      reply.view("/src/Paginas/index.hbs", params);
+      reply.view("/src/Paginas/index.hbs", { seo: seo });
       return;
     }
      
@@ -50,5 +41,4 @@ module.exports = {
     
   }
   
-  
-};
+}
