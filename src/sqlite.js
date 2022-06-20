@@ -45,10 +45,6 @@ dbWrapper.open( {filename: dbFile, driver: sqlite3.Database} )
           await db.run(
             "CREATE TABLE demos (id INTEGER PRIMARY KEY AUTOINCREMENT, id_usuario INTEGER, id_jogo INTEGER)"
           );
-          // Usuário Admin
-          await db.run(
-            `INSERT INTO usuarios (usuario, senha) VALUES ("Administrador", "${Base64.encode(process.env.ADMIN_KEY)}")`
-          );
         
       } else {
         console.log("Banco de dados existente");
@@ -98,10 +94,42 @@ module.exports = {
     }
   },
   
+  // Obter jogo por id no database
+  ObterJogo: async(nome) => {
+    try {
+      let select = await db.all(`SELECT * FROM jogos WHERE nome="${nome}"`);
+      return select;
+      
+    } catch (dbError) {
+      console.error(dbError);
+    }
+  },
+  
   // Obter todos os jogos no database
   ObterJogos: async() => {
     try {
       let select = await db.all(`SELECT * FROM jogos`);
+      return select;
+      
+    } catch (dbError) {
+      console.error(dbError);
+    }
+  },
+  
+  // Criar demo no database
+  CriarDemo: async(id_usuario, id_jogo) => {
+    try {
+      await db.run(`INSERT INTO jogos (id_usuario, id_jogo) VALUES (${id_usuario}, ${id_jogo})`);
+      
+    } catch (dbError) {
+      console.error(dbError);
+    }
+  },
+  
+  // Obter relação de usuários - demos
+  ObterDemos: async(id_usuario) => {
+    try {
+      let select = await db.all(`SELECT * FROM demos WHERE id_usuario = ${id_usuario}`);
       return select;
       
     } catch (dbError) {

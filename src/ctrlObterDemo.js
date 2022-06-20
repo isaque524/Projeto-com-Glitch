@@ -20,8 +20,16 @@ module.exports = {
     }
     
     let jogo = request.query.nome;
-    console.log(jogo);
+    let usuario = Base64.decode(request.cookies.Autenticacao.split(":")[0];
     
-  }
+    let select = await db.ObterJogo(jogo);
+    let id_jogo = select[0].id;
+    console.log(id_jogo);
+    
+    select = await db.ProcurarUsuario(usuario);
+    let id_usuario = select[0].id;
+    console.log(id_usuario);
+    
+  } //CriarDemo ObterJogo ProcurarUsuario
   
 }
