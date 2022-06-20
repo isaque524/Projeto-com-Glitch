@@ -6,10 +6,9 @@ module.exports = {
   
   configurar: async(servidor) => {
     servidor.get("/jogos", module.exports.viewJogos);
-    servidor.post("/jogos", module.exports.viewJogos);
   },
   
-  viewJogos: async(request, reply) => {
+  verJogos: async(request, reply) => {
     console.log("Pagina Inicial GET /jogos");
     let params = { seo: seo };
     let valido = await cookie.validacao(request.cookies.Autenticacao);

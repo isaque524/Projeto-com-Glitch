@@ -5,23 +5,27 @@ const Base64 = require("js-base64");
 module.exports = {
   
   configurar: async(servidor) => {
-    servidor.post("/", module.exports.efetuarLogin);
+    servidor.post("/login", module.exports.efetuarLogin);
   },
   
   efetuarLogin: async(request, reply) => {
-
     const usuario = request.body.usuario;
     const senha = request.body.senha;
+    
     if( senha.length > 20 || usuario.length > 20 ){
-      params.error = "Usuário e Senha devem possuir o máximo de 20 Caracteres";
-      reply.view("/src/Paginas/index.hbs", { seo: seo });
+      reply.view("/src/Paginas/index.hbs", { 
+        seo: seo,
+        error: "Usuário e Senha devem possuir o máximo de 20 Caracteres"
+      });
       return;
     }
      
     let select = await db.ProcurarUsuario(usuario, Base64.encode(senha));
     if( select.length == 0 ){
-      params.error = "Usuario ou Senha Incorreta";
-      reply.view("/src/Paginas/index.hbs", params);
+      reply.view("/src/Paginas/index.hbs", { 
+        seo: seo,
+        error: "Usuario ou Senha Incorreta"
+      });
       return;
     }
 
@@ -38,7 +42,6 @@ module.exports = {
     
     console.log(`Usuario ${usuario} autenticado`);
     reply.view("/src/Paginas/jogos.hbs");
-    
   }
   
 }
