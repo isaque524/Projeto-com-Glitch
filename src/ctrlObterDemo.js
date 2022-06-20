@@ -1,6 +1,8 @@
 const seo = require("./seo.json");
 const db  = require("./sqlite.js");
 const cookie = require("./cookie.js");
+const Base64 = require("js-base64");
+const uuid = require('uuid');
 
 module.exports = {
   
@@ -20,16 +22,19 @@ module.exports = {
     }
     
     let jogo = request.query.nome;
-    let usuario = Base64.decode(request.cookies.Autenticacao.split(":")[0];
-    
-    let select = await db.ObterJogo(jogo);
-    let id_jogo = select[0].id;
-    console.log(id_jogo);
+    let usuario = Base64.decode(request.cookies.Autenticacao).split(":")[0];
     
     select = await db.ProcurarUsuario(usuario);
     let id_usuario = select[0].id;
-    console.log(id_usuario);
     
-  } //CriarDemo ObterJogo ProcurarUsuario
+    let select = await db.ObterJogo(jogo);
+    let id_jogo = select[0].id;
+    
+    let chave_produto = uuid.v4();
+    
+    await db.CriarDemo(id_usuario, id_jogo, chave_produto);
+    
+    
+  } // ObterJogo ProcurarUsuario
   
 }

@@ -15,7 +15,8 @@
     "sqlite": "^4.1.1",
     "sqlite3": "^5.0.8",
     "fastify-cookie": "^5.7.0",
-    "js-base64": "^3.7.2"
+    "js-base64": "^3.7.2",
+    "uuid": "^8.3.2"
   },
   "engines": {
     "node": "12.x"

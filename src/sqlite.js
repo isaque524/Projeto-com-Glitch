@@ -43,7 +43,7 @@ dbWrapper.open( {filename: dbFile, driver: sqlite3.Database} )
           // Tabela Demos
           console.log("Criando a tabela demos");
           await db.run(
-            "CREATE TABLE demos (id INTEGER PRIMARY KEY AUTOINCREMENT, id_usuario INTEGER, id_jogo INTEGER)"
+            "CREATE TABLE demos (id INTEGER PRIMARY KEY AUTOINCREMENT, id_usuario INTEGER, id_jogo INTEGER, chave_produto VARCHAR[70])"
           );
         
       } else {
@@ -117,9 +117,9 @@ module.exports = {
   },
   
   // Criar demo no database
-  CriarDemo: async(id_usuario, id_jogo) => {
+  CriarDemo: async(id_usuario, id_jogo, chave_produto) => {
     try {
-      await db.run(`INSERT INTO jogos (id_usuario, id_jogo) VALUES (${id_usuario}, ${id_jogo})`);
+      await db.run(`INSERT INTO jogos (id_usuario, id_jogo, chave_produto) VALUES (${id_usuario}, ${id_jogo}, ${chave_produto})`);
       
     } catch (dbError) {
       console.error(dbError);
