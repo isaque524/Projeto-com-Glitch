@@ -5,7 +5,6 @@ module.exports = {
   
   // Validação do Cookie de Autenticação
   validacao: async(Autenticacao) => {
-    console.log("exec isValid");
     // Não Existe
       if( Autenticacao == null || Autenticacao == undefined ) {
         console.log("Usuário não autenticado")
