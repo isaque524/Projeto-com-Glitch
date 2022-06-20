@@ -39,6 +39,16 @@ dbWrapper.open( {filename: dbFile, driver: sqlite3.Database} )
               ("CUPHEAD", "Cuphead é um jogo de ação e tiros clássico,Inspirado nas animações infantis da década de 1930.", "https://cdn.glitch.global/a9ca4aa8-5634-4864-a73b-fd4799e547e2/cuphead.png?v=1655753278788")
             `
           );
+          
+          // Tabela Demos
+          console.log("Criando a tabela demos");
+          await db.run(
+            "CREATE TABLE demos (id INTEGER PRIMARY KEY AUTOINCREMENT, id_usuario INTEGER, id_jogo INTEGER)"
+          );
+          // Usuário Admin
+          await db.run(
+            `INSERT INTO usuarios (usuario, senha) VALUES ("Administrador", "${Base64.encode(process.env.ADMIN_KEY)}")`
+          );
         
       } else {
         console.log("Banco de dados existente");
