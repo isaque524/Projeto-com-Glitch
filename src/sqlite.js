@@ -25,7 +25,7 @@ dbWrapper.open( {filename: dbFile, driver: sqlite3.Database} )
         
       } else {
         console.log("Banco de dados existente");
-        console.log( await db.all("SELECT * FROM usuarios") )
+        //console.log( await db.all("SELECT * FROM usuarios") )
       }
       
     } catch (dbError) {
@@ -38,7 +38,6 @@ module.exports = {
   
   // Encontrar usuário no banco de dados
   ProcurarUsuario: async(usuario, senha) => {
-    console.log(`Procurando usuário ${usuario}`);
     try {
       let select = db.all(`SELECT * FROM usuarios WHERE usuario="${usuario}" and senha="${senha}"`);
       return select;
@@ -50,7 +49,6 @@ module.exports = {
   
   // Criar usuário no banco de dados
   CriarUsuario: async(usuario, senha) => {
-    console.log(`Criando o usuário ${usuario}`);
     try {
       await db.run(
         `INSERT INTO usuarios (usuario, senha) VALUES ("${usuario}", "${senha}")`
@@ -63,7 +61,6 @@ module.exports = {
   
   // Procurar se usuario já existe
   ProcurarCadastro: async(usuario) => {
-    console.log(`Procurando pelo usuario ${usuario}`);
     try {
       let select = await db.all(`SELECT * FROM usuarios WHERE usuario="${usuario}"`);
       return select;
@@ -71,9 +68,6 @@ module.exports = {
     } catch (dbError) {
       console.error(dbError);
     }
-  },
-  
-  
-  
+  }
   
 };

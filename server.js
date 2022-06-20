@@ -33,7 +33,7 @@ if (seo.url === "glitch-default") {
 
 // Injeção de dependência
 let nomesCtrl = process.env.CONTROLADORES.split(","); 
-console.log(nomesCtrl);
+console.log(`Controladores : ${nomesCtrl.join(", ")}`);
 for(let i = 0; i < nomesCtrl.length; i++) {
   let ctrl = require(`./src/${nomesCtrl[i]}.js`);
   ctrl.configurar(servidor);
