@@ -50,6 +50,7 @@ dbWrapper.open( {filename: dbFile, driver: sqlite3.Database} )
         console.log("Banco de dados existente");
         //console.log( await db.all("SELECT * FROM usuarios") );
         //console.log( await db.all("SELECT * FROM jogos") );
+        console.log( await db.all("SELECT * FROM demos") );
       }
       
     } catch (dbError) {
@@ -119,7 +120,7 @@ module.exports = {
   // Criar demo no database
   CriarDemo: async(id_usuario, id_jogo, chave_produto) => {
     try {
-      await db.run(`INSERT INTO jogos (id_usuario, id_jogo, chave_produto) VALUES (${id_usuario}, ${id_jogo}, ${chave_produto})`);
+      await db.run(`INSERT INTO demos (id_usuario, id_jogo, chave_produto) VALUES (${id_usuario}, ${id_jogo}, "${chave_produto}")`);
       
     } catch (dbError) {
       console.error(dbError);
