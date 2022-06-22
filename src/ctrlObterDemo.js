@@ -33,8 +33,6 @@ module.exports = {
     let chave_produto = uuid.v4();
     
     await db.CriarDemo(id_usuario, id_jogo, chave_produto);
-     
-    console.log(await db.ObterDemoUsuario(id_usuario));
     
     // Direcionar para a página do usuário
     reply.view("/src/Paginas/tabela.hbs", { 

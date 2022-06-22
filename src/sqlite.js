@@ -131,7 +131,7 @@ module.exports = {
   ObterDemoUsuario: async(id_usuario) => {
     try {
       let select = await db.all(`
-        SELECT d.id_usuario, d.chave_produto, j.nome, j.descricao, j.imagem
+        SELECT d.chave_produto, j.nome, j.descricao, j.imagem
         FROM demos d
         JOIN jogos j ON j.id = d.id_jogo
         WHERE d.id_usuario=${id_usuario}
