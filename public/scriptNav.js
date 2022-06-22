@@ -7,11 +7,11 @@
   };
 
 window.onload = function() {
-  const state = document.getElementById("card").getAttribute('name');
+  const state = document.getElementById("card_go").getAttribute('go_nome');
   
   // Change state
-    replaceState(state);
+    replaceState(go);
   
   // Change active top nav
-    navBarAtivada(`navbar_${state}`);
+    navBarAtivada(`navbar_${go}`);
   
