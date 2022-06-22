@@ -8,6 +8,8 @@
 body {
     background: rgb(27, 27, 27);
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  
 }
 header{
  width:13% !important;
@@ -83,3 +85,6 @@ header{
 .table tbody .chave{
   transform:translatex(359px) translatey(-39px);
 }
+nav{
+    transform:translatex(22px) translatey(-175px);
+   }
