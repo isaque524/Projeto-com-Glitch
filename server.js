@@ -38,3 +38,10 @@ for(let i = 0; i < nomesCtrl.length; i++) {
   let ctrl = require(`./src/${nomesCtrl[i]}.js`);
   ctrl.configurar(servidor);
 }
+
+// Injeção de dependência
+ for( let partial of process.env.PARTIALS.split(",") ){
+    let directory = `${__dirname}/src/paginas/Barnav/${partial}.hbs`;
+    hbs.registerPartial( partial, fs.readFileSync(directory, 'utf8') );
+    console.log(`Partial injected:  ${directory}`);
+  }
