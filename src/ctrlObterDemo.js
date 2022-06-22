@@ -3,7 +3,6 @@ const db  = require("./sqlite.js");
 const cookie = require("./cookie.js");
 const Base64 = require("js-base64");
 const uuid = require('uuid');
-const jogos  = require("./ctrlVerJogos.js");
 
 module.exports = {
   
@@ -34,10 +33,14 @@ module.exports = {
     let chave_produto = uuid.v4();
     
     await db.CriarDemo(id_usuario, id_jogo, chave_produto);
-    let demos = await db.ObterDemos(id_usuario);
+    
+    
     
     // Direcionar para a página do usuário
-    await jogos.verJogos(request, reply);
+    reply.view("/src/Paginas/tabela.hbs", { 
+        seo: seo,
+      });
+      return;
   }
   
 }

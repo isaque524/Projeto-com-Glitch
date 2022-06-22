@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Tabela</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="/list.css" />
+   <script src="https://kit.fontawesome.com/723f0cb31d.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+
+    <div class="books" id="current_state" state_name="books">
+        <!-- Title -->
+        <header>
+          <h1>Meus Jogos</h1>
+        </header>
+        <div class="row">
+        <div class="column">
+    <table class="table">
+            <thead>
+              <tr>
+                <th class="imag" ><img src="./assets/elden.png" alt="Imagem" /></th>
+                <th class="nome">nome</th>
+                <th class="descri">descrição</th>
+                <th class="chave">chave</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each jogos}}
+                <tr>
+                  <td class="imag">{{imagem}}</td>
+                  <td class="nome">{{nome}}</td>
+                  <td class="descri">{{descricao}}</td>
+                  <td class="chave">{{chave_produto}}</td>
+                </tr>
+              {{/each}}
+            </tbody>
+          </table>
+          
+    </div>
+    <div class="column">
+        <table class="table">
+                <thead>
+                  <tr>
+                    <th class="imag" ><img src="https://cdn.glitch.global/a9ca4aa8-5634-4864-a73b-fd4799e547e2/elden.png?v=1655753287099" /></th>
+                    <th class="nome">nome</th>
+                    <th class="descri">descrição</th>
+                    <th class="chave">chave</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {{#each jogos}}
+                    <tr>
+                      <td class="imag">{{imagem}}</td>
+                      <td class="nome">{{nome}}</td>
+                      <td class="descri">{{descricao}}</td>
+                      <td class="chave">{{chave_produto}}</td>
+                    </tr>
+                  {{/each}}
+                </tbody>
+              </table>
+         </div>
+            <div class="column">
+    <table class="table">
+            <thead>
+              <tr>
+                <th class="imag" ><img src="./assets/elden.png" alt="Imagem" /></th>
+                <th class="nome">nome</th>
+                <th class="descri">descrição</th>
+                <th class="chave">chave</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each jogos}}
+                <tr>
+                  <td class="imag">{{imagem}}</td>
+                  <td class="nome">{{nome}}</td>
+                  <td class="descri">{{descricao}}</td>
+                  <td class="chave">{{chave_produto}}</td>
+                </tr>
+              {{/each}}
+            </tbody>
+          </table>
+          
+    </div>
+  </div>
+
+
+</body>
+</html>

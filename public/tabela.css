@@ -1,0 +1,67 @@
+  * {
+  box-sizing: border-box;
+}
+.row{
+    background-image:linear-gradient(-82deg, rgb(60,59,63) 0%, rgb(96,92,60) 100%);
+}
+
+body {
+    background: rgb(27, 27, 27);
+  font-family: Arial, Helvetica, sans-serif;
+}
+header{
+ width:13% !important;
+ transform:translatex(726px) translatey(26px);
+}
+.column{
+    background-color: rgb(22, 35, 47);
+    color: white;
+            width:1159px;
+            margin: 0 -5px;
+            margin-top: 43px;
+            border-radius:15px ;
+            transform:translatex(171px) translatey(4px);
+        }
+        .card h3{
+            padding: 10px;
+        }
+        .card p{
+            padding: 10px;
+        }
+        .column:hover{
+            background-image:linear-gradient(to right, #000000 0%, #434343 100%);
+            background-color: rgb(62, 62, 62);
+            color: white;
+            cursor: pointer;
+            transform: scale(1.03);
+            transition: all 1s ease;
+
+        }
+       
+}
+
+.table tr img{
+ width:181px;
+}
+
+/* Chave */
+.table tr .chave{
+ transform:translatex(625px) translatey(-32px);
+ position:relative;
+ left:4px;
+ top: -16px;
+}
+
+/* Descri */
+.table tr .descri{
+ transform:translatex(394px) translatey(-39px);
+ position:relative;
+ top:-16px;
+}
+
+/* Nome */
+.table tr .nome{
+ transform:translatex(217px) translatey(-36px);
+ position:relative;
+ top:-16px;
+}
