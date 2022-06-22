@@ -14,23 +14,22 @@
 </head>
 <body>
         <div class="row">
-            <header>
+          {{#each jogos}}
+          <header>
             <h1>Meus Jogos</h1>
           </header>
-          {{#each jogos}}
           <!-- loop inicio -->
         <div class="column">
     <table class="table">
             <thead>
               <tr>
-                <th class="imag" ></th>
+                 <div class="card-image" style="background-image: url('{{imagem}}');"></div>
                 <th class="nome">nome</th>
                 <th class="chave">chave</th>
               </tr>
             </thead>
             <tbody>
                 <tr>
-                  <td class="imag" style="background-image: url('{{imagem}}');"></td>
                   <td class="nome">{{nome}}</td>
                   <td class="chave">{{chave_produto}}</td>
                 </tr>

@@ -12,6 +12,7 @@ body {
 header{
  width:13% !important;
  transform:translatex(726px) translatey(26px);
+ color: white;
 }
 .column{
     background-color: rgb(22, 35, 47);
@@ -36,24 +37,17 @@ header{
             transform: scale(1.03);
             transition: all 1s ease;
 
-        }
-        .imagem{
-            background-image: url(assets/elden.png);
-    background-repeat: no-repeat;
-    width:181px;
-}
+        } 
 
-  .table tr img{
- display:inline-block;
- width:173px;
- position:relative;
- top:-12px;
- border-top-left-radius:8px;
- border-top-right-radius:8px;
- border-bottom-left-radius:8px;
- border-bottom-right-radius:8px;
+        .row .card-image{
+            padding-right:158px;
+            width:19%;
+            transform:translatex(15px) translatey(22px);
+            height:130px;
+            margin-bottom: 15px;
+            background-size: cover;
+            border-radius: 15px 15px 0 0 ;
 }
-
 
 /* Chave */
 .table tr .chave{
@@ -72,21 +66,20 @@ header{
 }
 
 .table thead .nome{
-  transform:translatex(38px) translatey(50px);
+  transform:translatex(283px) translatey(-60px);
 }
 
 /* Nome */
 .table tbody .nome{
-  transform:translatex(35px) translatey(41px);
+  transform:translatex(269px) translatey(-39px);
 }
 
 /* Chave */
 .table thead .chave{
-  transform:translatex(202px) translatey(55px);
+  transform:translatex(359px) translatey(-64px);
 }
 
 /* Chave */
 .table tbody .chave{
-  transform:translatex(186px) translatey(37px);
+  transform:translatex(359px) translatey(-39px);
 }
-
