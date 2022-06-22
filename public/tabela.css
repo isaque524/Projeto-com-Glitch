@@ -1,4 +1,4 @@
-  * {
+ * {
   box-sizing: border-box;
 }
 .row{
@@ -37,7 +37,10 @@ header{
             transition: all 1s ease;
 
         }
-       
+        .imagem{
+            background-image: url(assets/elden.png);
+    background-repeat: no-repeat;
+    width:181px;
 }
 
 .table tr img{
