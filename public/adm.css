@@ -1,0 +1,31 @@
+/* Container */
+.container{
+ transform:translatex(-8px) translatey(266px);
+}
+
+/* Body */
+body{
+ background-image:linear-gradient(to right, #000000 0%, #434343 100%);
+}
+
+form .form-group{
+ transform:translatex(427px) translatey(369px);
+ width:684px;
+ color: white;
+}
+
+/* Label */
+label{
+ position:relative;
+ left:279px;
+}
+.container p{
+ width:21% !important;
+}
+
+/* Paragraph */
+p{
+ position:relative;
+ left:374px;
+ color: white;
+}
