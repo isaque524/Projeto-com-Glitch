@@ -147,10 +147,14 @@ module.exports = {
   ObterTopDemos: async() => {
     try {
       let select = await db.all(`
-        SELECT d.chave_produto, j.nome, j.descricao, j.imagem
-        FROM demos d
-        JOIN jogos j ON j.id = d.id_jogo
-        WHERE d.id_usuario=${id_usuario}
+        SELECT DISTINCT
+        FROM(
+          SELECT 
+            id_jogo,
+            DENSE_RANK () OVER (ORDER BY id_jogo) Ranking
+          FROM demos
+        )        
+        WHERE Ranking <= 3
       `);
       return select;
       

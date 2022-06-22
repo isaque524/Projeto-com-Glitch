@@ -19,6 +19,9 @@ module.exports = {
       return;
     }
     
+    console.log(await db.ObterTopDemos());
+    
+    
     reply.view("/src/Paginas/adm.hbs", { 
       seo: seo
     });

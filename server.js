@@ -15,7 +15,7 @@ servidor.register(require("fastify-static"), {
 });
 servidor.register(require('fastify-cookie'), {
   secret: `${process.env.COOKIE_SECRET}`,
-  parseOptions: {}
+  parseOption : {}
 });
 servidor.listen(process.env.PORT, '0.0.0.0', function(err, address) {
   if (err) {
@@ -51,4 +51,4 @@ console.log(nomesPartials);
 for(let i = 0; i < nomesPartials.length; i++) {
   let nome = nomesPartials[i];
   hbs.registerPartial(nome, fs.readFileSync(path.join(__dirname, 'src', 'Paginas', 'partials', nome+'.hbs'), 'utf8'));
-}
+} 
