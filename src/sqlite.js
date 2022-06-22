@@ -50,7 +50,7 @@ dbWrapper.open( {filename: dbFile, driver: sqlite3.Database} )
         console.log("Banco de dados existente");
         //console.log( await db.all("SELECT * FROM usuarios") );
         //console.log( await db.all("SELECT * FROM jogos") );
-        console.log( await db.all("SELECT * FROM demos") );
+        //console.log( await db.all("SELECT * FROM demos") );
       }
       
     } catch (dbError) {
@@ -128,9 +128,14 @@ module.exports = {
   },
   
   // Obter relação de usuários - demos
-  ObterDemos: async(id_usuario) => {
+  ObterDemoUsuario: async(id_usuario) => {
     try {
-      let select = await db.all(`SELECT * FROM demos WHERE id_usuario = ${id_usuario}`);
+      let select = await db.all(`
+        SELECT d.id_usuario, d.chave_produto, j.nome, j.descricao, j.imagem
+        FROM demos d
+        JOIN jogos j ON j.id = d.id_jogo
+        WHERE d.id_usuario=${id_usuario}
+      `);
       return select;
       
     } catch (dbError) {
