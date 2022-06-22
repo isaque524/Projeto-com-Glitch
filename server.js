@@ -1,3 +1,5 @@
+
+const hbs = require("handlebars")
 const path = require("path");
 const servidor = require("fastify")({
   logger: false
@@ -31,7 +33,9 @@ if (seo.url === "glitch-default") {
   seo.url = `https://${process.env.PROJECT_DOMAIN}.glitch.me`;
 }
 
-// Injeção de dependência
+//
+// Carga dinâmica dos controladores de Caso de Uso (Injeção de Dependência)
+//
 let nomesCtrl = process.env.CONTROLADORES.split(","); 
 console.log(`Controladores : ${nomesCtrl.join(", ")}`);
 for(let i = 0; i < nomesCtrl.length; i++) {
@@ -39,9 +43,13 @@ for(let i = 0; i < nomesCtrl.length; i++) {
   ctrl.configurar(servidor);
 }
 
-// Injeção de dependência
- for( let partial of process.env.PARTIALS.split(",") ){
-    let directory = `${__dirname}/src/paginas/Barnav/${partial}.hbs`;
-    hbs.registerPartial( partial, fs.readFileSync(directory, 'utf8') );
-    console.log(`Partial injected:  ${directory}`);
-  }
+//
+// Carga dinâmica dos partials do meu sistema
+//
+const fs = require("fs");  
+let nomesPartials = process.env.PARTIALS.split(","); 
+console.log(nomesPartials);
+for(let i = 0; i < nomesPartials.length; i++) {
+  let nome = nomesPartials[i];
+  hbs.registerPartial(nome, fs.readFileSync(path.join(__dirname, 'src', 'Paginas', 'partials', nome+'.hbs'), 'utf8'));
+}
