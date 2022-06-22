@@ -35,7 +35,7 @@ module.exports = {
     await db.CriarDemo(id_usuario, id_jogo, chave_produto);
     
     // Direcionar para a página do usuário
-    reply.view("/src/Paginas/tabela.hbs", { 
+    reply.view("/src/Paginas/usuario.hbs", { 
         seo: seo,
         demos: await db.ObterDemoUsuario(id_usuario)
       });
