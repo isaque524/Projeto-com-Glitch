@@ -38,6 +38,16 @@ header{
         .card p{
             padding: 10px;
         }
+
+.column:hover{
+            background-image:linear-gradient(to right, #000000 0%, #434343 100%);
+            background-color: rgb(62, 62, 62);
+            color: white;
+            cursor: pointer;
+            transform: scale(1.03);
+            transition: all 1s ease;
+
+        } 
         
 
 /* Chave */
@@ -56,17 +66,19 @@ header{
 }
 
 .table thead .nome{
-  transform:translatex(192px) translatey(56px);
+  padding-right:128px !important;
+ transform:translatex(279px) translatey(36px);
 }
 
 /* Nome */
 .table tbody .nome{
-  transform:translatex(269px) translatey(-39px);
+   transform:translatex(105px) translatey(44px);
+ padding-right:109px !important;
 }
 
 /* Chave */
 .table thead .chave{
-  transform:translatex(359px) translatey(-64px);
+  transform:translatex(427px) translatey(55px);
 }
 
 /* Chave */
