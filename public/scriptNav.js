@@ -7,7 +7,7 @@
   };
 
 window.onload = function() {
-  const state = document.getElementById("card_go").getAttribute('go_nome');
+  const go = document.getElementById("card_go").getAttribute('go_nome');
   
   // Change state
     replaceState(go);
