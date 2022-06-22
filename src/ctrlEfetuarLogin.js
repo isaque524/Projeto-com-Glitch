@@ -39,7 +39,7 @@ module.exports = {
       sameSite: 'lax',
       httpOnly: true
     });
-    request.cookies.Authentication = Autenticacao;
+    request.cookies.Autenticacao = Autenticacao;
     
     console.log(`Usuario ${usuario} autenticado`);
     await jogos.verJogos(request, reply);
