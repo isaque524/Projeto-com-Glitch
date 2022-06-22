@@ -6,6 +6,7 @@
         body{
             background: rgb(27, 27, 27);
             transform:translatex(-22px) translatey(178px);
+            overflow-x: hidden;
             
         }
 
@@ -99,3 +100,8 @@
 .container .card2 .card-image{
  width:149px;
 }
+
+nav{
+     transform:translatex(22px) translatey(-175px);
+   }
+
