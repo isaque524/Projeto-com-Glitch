@@ -5,3 +5,13 @@
       ? navbar.setAttribute("class", "active")
       : {};
   };
+
+window.onload = function() {
+  const state = document.getElementById("card").getAttribute('name');
+  
+  // Change state
+    replaceState(state);
+  
+  // Change active top nav
+    navBarAtivada(`navbar_${state}`);
+  
