@@ -1,4 +1,4 @@
- * {
+* {
   box-sizing: border-box;
 }
 .row{
@@ -43,9 +43,17 @@ header{
     width:181px;
 }
 
-.table tr img{
- width:181px;
+  .table tr img{
+ display:inline-block;
+ width:173px;
+ position:relative;
+ top:-12px;
+ border-top-left-radius:8px;
+ border-top-right-radius:8px;
+ border-bottom-left-radius:8px;
+ border-bottom-right-radius:8px;
 }
+
 
 /* Chave */
 .table tr .chave{
@@ -55,12 +63,6 @@ header{
  top: -16px;
 }
 
-/* Descri */
-.table tr .descri{
- transform:translatex(394px) translatey(-39px);
- position:relative;
- top:-16px;
-}
 
 /* Nome */
 .table tr .nome{
@@ -68,3 +70,23 @@ header{
  position:relative;
  top:-16px;
 }
+
+.table thead .nome{
+  transform:translatex(38px) translatey(50px);
+}
+
+/* Nome */
+.table tbody .nome{
+  transform:translatex(35px) translatey(41px);
+}
+
+/* Chave */
+.table thead .chave{
+  transform:translatex(202px) translatey(55px);
+}
+
+/* Chave */
+.table tbody .chave{
+  transform:translatex(186px) translatey(37px);
+}
+

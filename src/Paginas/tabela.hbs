@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="/tabela.css">
+    <title>Divirtam-se</title>
+   
+
+    </head>
+  
+</head>
+<body>
+        <div class="row">
+            <header>
+            <h1>Meus Jogos</h1>
+          </header>
+          {{#each jogos}}
+          <!-- loop inicio -->
+        <div class="column">
+    <table class="table">
+            <thead>
+              <tr>
+                <th class="imag" ></th>
+                <th class="nome">nome</th>
+                <th class="chave">chave</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                  <td class="imag" style="background-image: url('{{imagem}}');"></td>
+                  <td class="nome">{{nome}}</td>
+                  <td class="chave">{{chave_produto}}</td>
+                </tr>
+            </tbody>
+          </table>
+          
+    </div>
+    {{/each}}
+    <!-- fim do loop -->
+  </div>
+
+
+</body>
+</html>
