@@ -31,15 +31,7 @@ header{
         .card p{
             padding: 10px;
         }
-        .column:hover{
-            background-image:linear-gradient(to right, #000000 0%, #434343 100%);
-            background-color: rgb(62, 62, 62);
-            color: white;
-            cursor: pointer;
-            transform: scale(1.03);
-            transition: all 1s ease;
-
-        } 
+        
 
         .row .card-image{
             padding-right:158px;

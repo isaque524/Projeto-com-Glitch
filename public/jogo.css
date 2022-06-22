@@ -83,7 +83,6 @@
             cursor: pointer;
             transform: scale(1.03);
             transition: all 1s ease;
-
         }
         .container .card2 img{
  display:inline-block;
