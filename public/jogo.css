@@ -103,6 +103,19 @@
 nav{
     transform:translatex(22px) translatey(-175px);
    }
+#myNav .navbar-nav .btn-danger{
+ width:35px;
+ height:32px;
+ transform:translatex(0px) translatey(4px);
+}
+
+/* Font Icon */
+.navbar-nav .btn-danger i{
+ position:relative;
+ top:-4px;
+ padding-right:2px;
+ left:-4px;
+}
 
    
 

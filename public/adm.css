@@ -51,3 +51,16 @@ form .form-group button{
    background-image:linear-gradient(to right, #e6dada 0%, #274046 100%);
    color: white;
 }
+#myNav .navbar-nav .btn-danger{
+ width:35px;
+ height:32px;
+ transform:translatex(0px) translatey(4px);
+}
+
+/* Font Icon */
+.navbar-nav .btn-danger i{
+ position:relative;
+ top:-4px;
+ padding-right:2px;
+ left:-4px;
+}
