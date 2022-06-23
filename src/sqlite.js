@@ -50,7 +50,7 @@ dbWrapper.open( {filename: dbFile, driver: sqlite3.Database} )
         console.log("Banco de dados existente");
         //console.log( await db.all("SELECT * FROM usuarios") );
         //console.log( await db.all("SELECT * FROM jogos") );
-        console.log( await db.all("SELECT * FROM demos") );
+        //console.log( await db.all("SELECT * FROM demos") );
       }
       
     } catch (dbError) {
@@ -147,14 +147,16 @@ module.exports = {
   ObterTopDemos: async() => {
     try {
       let select = await db.all(`
-        SELECT DISTINCT
-        FROM(
-          SELECT 
+        SELECT
+          j.nome
+          t1.ranking
+        FROM (
+          SELECT DISTINCT
             id_jogo,
-            DENSE_RANK () OVER (ORDER BY id_jogo) Ranking
+            DENSE_RANK () OVER (ORDER BY id_jogo DESC) ranking
           FROM demos
-        )        
-        WHERE Ranking <= 3
+        ) t1
+        JOIN jogos j ON t1.id_jogo = j.id
       `);
       return select;
       
