@@ -2,7 +2,7 @@ const hbs = require("handlebars")
 const path = require("path");
 const servidor = require("fastify")({
   logger: false    
-});      
+});        
 servidor.register(require("fastify-formbody"));
 servidor.register(require("point-of-view"), {
   engine: {
@@ -11,7 +11,7 @@ servidor.register(require("point-of-view"), {
 });   
 servidor.register(require("fastify-static"), {
   root: path.join(__dirname, "public"), 
-  prefix: "/"
+   prefix: "/"
 });
 servidor.register(require('fastify-cookie'), {
   secret: `${process.env.COOKIE_SECRET}`,
