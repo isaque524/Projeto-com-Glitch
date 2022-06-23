@@ -51,4 +51,4 @@ console.log(nomesPartials);
 for(let i = 0; i < nomesPartials.length; i++) {
   let nome = nomesPartials[i];
   hbs.registerPartial(nome, fs.readFileSync(path.join(__dirname, 'src', 'Paginas', 'partials', nome+'.hbs'), 'utf8'));
-}  
+}   
