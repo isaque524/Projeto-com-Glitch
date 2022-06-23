@@ -48,4 +48,6 @@ form .form-group{
 /* Button */
 form .form-group button{
  transform:translatex(288px) translatey(0px) !important;
+   background-image:linear-gradient(to right, #e6dada 0%, #274046 100%);
+   color: white;
 }
