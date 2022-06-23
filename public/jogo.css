@@ -117,6 +117,10 @@ nav{
  padding-right:2px;
  left:-4px;
 }
-
+h1{
+ transform:translatex(530px) translatey(-50px);
+ width:38%;
+color: white;
+}
    
 
