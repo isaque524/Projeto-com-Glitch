@@ -29,3 +29,23 @@ p{
  left:374px;
  color: white;
 }
+#card_go{
+ transform:translatex(293px) translatey(295px) !important;
+}
+
+/* Form group */
+form .form-group{
+ transform:translatex(284px) translatey(356px) !important;
+}
+
+/* Button */
+#card_go button{
+ transform:translatex(279px) translatey(0px);
+ background-image:linear-gradient(to right, #e6dada 0%, #274046 100%);
+   color: white;
+}
+
+/* Button */
+form .form-group button{
+ transform:translatex(288px) translatey(0px) !important;
+}
