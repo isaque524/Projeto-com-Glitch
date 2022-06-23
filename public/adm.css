@@ -1,6 +1,6 @@
 /* Container */
 .container{
- transform:translatex(-8px) translatey(266px);
+  transform:translatex(-9px) translatey(163px);
 }
 
 /* Body */
@@ -30,12 +30,12 @@ p{
  color: white;
 }
 #card_go{
- transform:translatex(293px) translatey(295px) !important;
+  transform:translatex(258px) translatey(242px) !important;
 }
 
 /* Form group */
 form .form-group{
- transform:translatex(284px) translatey(356px) !important;
+ transform:translatex(261px) translatey(296px) !important;
 }
 
 /* Button */
