@@ -2,7 +2,7 @@ const hbs = require("handlebars")
 const path = require("path");
 const servidor = require("fastify")({
   logger: false    
-});     
+});         
 servidor.register(require("fastify-formbody"));
 servidor.register(require("point-of-view"), {
   engine: {
@@ -51,4 +51,4 @@ console.log(nomesPartials);
 for(let i = 0; i < nomesPartials.length; i++) {
   let nome = nomesPartials[i];
   hbs.registerPartial(nome, fs.readFileSync(path.join(__dirname, 'src', 'Paginas', 'partials', nome+'.hbs'), 'utf8'));
-} 
+}  
