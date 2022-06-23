@@ -23,12 +23,12 @@ module.exports = {
     let decricao_jogo = request.body.decricao_jogo;
     let url_jogo = request.body.url_jogo; 
     
-    let select = await db.ObterJogos();
+    await db.CriarJogo(nome_jogo, decricao_jogo, url_jogo);
     
     reply.view("/src/Paginas/jogos.hbs", { 
       seo: seo,
-      jogos: select
+      jogos: await db.ObterJogos()
     });
-  },
+  }
   
 }
