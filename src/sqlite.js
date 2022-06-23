@@ -127,6 +127,16 @@ module.exports = {
     }
   },
   
+  // Apagar um jogo no database
+  ApagarJogo: async(nome) => {
+    try {
+      await db.run(`DELETE FROM jogos WHERE nome="${nome}"`);
+      
+    } catch (dbError) {
+      console.error(dbError);
+    }
+  },
+  
   // Criar demo no database
   CriarDemo: async(id_usuario, id_jogo, chave_produto) => {
     try {
