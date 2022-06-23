@@ -10,26 +10,26 @@
 </head>
   
   <body>
-    {{>navbar}}
+    {{> navbar}}
+    
     <div class="container">
         <p>Lista das demos mais Baixadas</p>
         <div class="list-group list-group-flush">
-            <a href="#" class="list-group-item list-group-item-action list-group-item-dark"> Item 1</a>
-            <a href="#" class="list-group-item list-group-item-action list-group-item-dark"> Item 2</a>
-            <a href="#" class="list-group-item list-group-item-action list-group-item-dark"> Item 3</a>
+          {{#each ranking}}
+            <a href="#" class="list-group-item list-group-item-action list-group-item-dark">{{nome}}</a>
+          {{/each}}
         </div>
     </div>
-
 
     <form>
         <div class="form-group" id="card_go" go_nome="adm">
           <label >Adicione um Jogo</label>
-          <input type="text" class="form-control" id=""  placeholder="Nome do Jogo">
-          <input type="text" class="form-control" id=""  placeholder="Descrição do Jogo">
-          <input type="text" class="form-control" id=""  placeholder=" URL da Imagen">
+          <input type="text" class="form-control" id=""  placeholder="Nome do Jogo" name="nome_jogo"/>
+          <input type="text" class="form-control" id=""  placeholder="Descrição do Jogo" name="decricao_jogo">
+          <input type="text" class="form-control" id=""  placeholder="URL da Imagen" name="url_jogo">
+          <button type="submit">Adicionar</button>
         </div>
         </form>
-
 
 </body>
 </html>

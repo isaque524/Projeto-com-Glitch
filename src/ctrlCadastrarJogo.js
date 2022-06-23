@@ -5,10 +5,10 @@ const cookie = require("./cookie.js");
 module.exports = {
   
   configurar: async(servidor) => {
-    servidor.get("/admin", module.exports.verAdmin);
+    servidor.post("/jogo", module.exports.cadastrarJogo);
   },
   
-  verAdmin: async(request, reply) => {
+  cadastrarJogo: async(request, reply) => {
     let valido = await cookie.validacao(request.cookies.Autenticacao);
     
     if( !valido ){
@@ -19,9 +19,15 @@ module.exports = {
       return;
     }
     
-    reply.view("/src/Paginas/adm.hbs", { 
+    let nome_jogo = request.body.nome_jogo;
+    let decricao_jogo = request.body.decricao_jogo;
+    let url_jogo = request.body.url_jogo; 
+    
+    let select = await db.ObterJogos();
+    
+    reply.view("/src/Paginas/jogos.hbs", { 
       seo: seo,
-      ranking: await db.ObterTopDemos()
+      jogos: select
     });
   },
   

@@ -117,6 +117,16 @@ module.exports = {
     }
   },
   
+  // Criar um jogo no database
+  CriarJogo: async(nome, descricao, imagem) => {
+    try {
+      await db.run(` INSERT INTO jogos (nome, descricao, imagem) VALUES ("${nome}", "${descricao}", "${imagem}") `);
+      
+    } catch (dbError) {
+      console.error(dbError);
+    }
+  },
+  
   // Criar demo no database
   CriarDemo: async(id_usuario, id_jogo, chave_produto) => {
     try {
@@ -143,12 +153,12 @@ module.exports = {
     }
   },
   
-  // Obter relação de usuários - demos
+  // Top demos clicadas
   ObterTopDemos: async() => {
     try {
       let select = await db.all(`
         SELECT
-          j.nome
+          j.nome,
           t1.ranking
         FROM (
           SELECT DISTINCT
