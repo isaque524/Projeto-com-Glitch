@@ -1,6 +1,8 @@
 const seo = require("./seo.json");
 const db  = require("./sqlite.js");
 const cookie = require("./cookie.js");
+const Base64 = require("js-base64");
+
 
 module.exports = {
   
@@ -9,13 +11,10 @@ module.exports = {
   },
   
 
-  
   verAdmin: async(request, reply) => {
     let valido = await cookie.validacao(request.cookies.Autenticacao);
-      let usuario = request.body.usuarior
-      let body_pass = request.body.password;
-    
-    if(usuario!= "Administrador"  ){
+    let credenciais = Base64.decode(request.cookies.Autenticacao).split(":"); 
+    if(credenciais[0] != "Administrador" ){
       reply.view("/src/Paginas/index.hbs", { 
         seo: seo,
         error: "ADM deve se autenticar"
