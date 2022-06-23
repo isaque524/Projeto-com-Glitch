@@ -3,13 +3,20 @@
 
      <div id="myNav" class="collapse navbar-collapse justify-content-end">
         <ul class="navbar-nav">
-            <li class="nav-item"><a href="/jogos" class="nav-link "  id="Store" data-toggle="tab">Store</a></li>
-            <li class="nav-item"><a href="/usuario" class="nav-link" id="Carrinho" data-toggle="tab">Carrinho</a></li>
-            <li class="nav-item"><a href="/admin" class="nav-link"   id="Adm"  data-toggle="tab">Adm</a></li>
+            <li class="nav-item"><a href="/jogos" class="nav-link "  id="Store" data-toggle="tab">jogos</a></li>
+            <li class="nav-item"><a href="/usuario" class="nav-link" id="Carrinho" data-toggle="tab">usuario</a></li>
+            <li class="nav-item"><a href="/admin" class="nav-link"   id="Adm"  data-toggle="tab">Admin</a></li>
           <button class="btn btn-danger" onclick="window.location.href='/'"><i class="fa-solid fa-power-off"></i></button>
         </ul>
 </div>
 </nav>
-<script src="/scriptNav.js"></script>  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+  $('.navbar-nav li ').click(function() {
+    $('.navbar-nav li').removeClass('active');
+    $(this).addClass('active'); 
+}); 
+</script>  
 
   
