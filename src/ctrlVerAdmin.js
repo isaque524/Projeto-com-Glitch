@@ -1,6 +1,7 @@
 const seo = require("./seo.json");
 const db  = require("./sqlite.js");
 const cookie = require("./cookie.js");
+const db     = require("../database/sqlite.js");
 
 module.exports = {
   
@@ -11,10 +12,10 @@ module.exports = {
   verAdmin: async(request, reply) => {
     let valido = await cookie.validacao(request.cookies.Autenticacao);
     
-    if( !valido ){
+    if( usuario != "Admi"  ){
       reply.view("/src/Paginas/index.hbs", { 
         seo: seo,
-        error: "Usuário deve se autenticar"
+        error: "ADM deve se autenticar"
       });
       return;
     }
