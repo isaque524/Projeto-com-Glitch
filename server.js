@@ -2,7 +2,7 @@ const hbs = require("handlebars")
 const path = require("path");
 const servidor = require("fastify")({
   logger: false    
-});         
+});     
 servidor.register(require("fastify-formbody"));
 servidor.register(require("point-of-view"), {
   engine: {
