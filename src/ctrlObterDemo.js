@@ -37,7 +37,7 @@ module.exports = {
     // Direcionar para a página do usuário
     
     let credenciais = Base64.decode(request.cookies.Autenticacao).split(":"); 
-    if(credenciais[0] != "Administrador" ){
+    if(credenciais[0] == "Administrador" ){
       reply.view("/src/Paginas/index.hbs", { 
         seo: seo,
         error: "ADM não pode ter tabela"
