@@ -35,11 +35,14 @@ module.exports = {
     await db.CriarDemo(id_usuario, id_jogo, chave_produto);
     
     // Direcionar para a página do usuário
+    
+     let valido = await cookie.validacao(request.cookies.Autenticacao);
+    let credenciais = Base64.decode(request.cookies.Autenticacao).split(":"); 
+    if(credenciais[0] != "Administrador" ){
     reply.view("/src/Paginas/usuario.hbs", { 
         seo: seo,
         demos: await db.ObterDemoUsuario(id_usuario)
       });
       return;
   }
-  
 }
