@@ -25,9 +25,9 @@
     <form method="post" action="/jogo">
       <div class="form-group" id="card_go" go_nome="adm">
         <label >Adicione um Jogo</label>
-        <input type="text" class="form-control" id=""  placeholder="Nome do Jogo" name="nome_jogo"/>
-        <input type="text" class="form-control" id=""  placeholder="Descrição do Jogo" name="decricao_jogo">
-        <input type="text" class="form-control" id=""  placeholder="URL da Imagen" name="url_jogo">
+        <input type="text" class="form-control" id=""  placeholder="Nome do Jogo" name="nome_jogo" required>
+        <input type="text" class="form-control" id=""  placeholder="Descrição do Jogo" name="decricao_jogo" required>
+        <input type="text" class="form-control" id=""  placeholder="URL da Imagen" name="url_jogo" required>
         <button type="submit">Adicionar</button>
       </div>
     </form>
@@ -35,7 +35,7 @@
     <form method="post" action="/apagar/jogo">
       <div class="form-group">
       <label>Deletar um Jogo</label>
-       <input type="text" class="form-control" id=""  placeholder="Nome do Jogo" name="nome_jogo"/>
+       <input type="text" class="form-control" id=""  placeholder="Nome do Jogo" name="nome_jogo" required>
       <button type="submit">Deletar</button>
       </div>
     </form>
